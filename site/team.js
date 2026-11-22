@@ -11,7 +11,7 @@
       search: "Rechercher", allOwners: "Tous les responsables", allCats: "Toutes les catégories", mine: "Mes tâches", onlyNews: "Seulement les nouveautés",
       add: "Nouvelle tâche", edit: "Modifier", newTask: "Nouvelle tâche", editTask: "Modifier la tâche", del: "Supprimer", delSure: "Vraiment supprimer ?",
       noDate: "sans date", lateTag: "en retard", by: "par", isNew: "Nouveau", isMod: "Modifié", isDone: "Fait", empty: "Aucune tâche pour ce filtre.",
-      saved: "Enregistré", deleted: "Supprimé", update: "Mise à jour reçue", logout: "Déconnexion", hello: "Connecté·e :",
+      saved: "Enregistré", deleted: "Supprimé", update: "Mise à jour reçue", logout: "Déconnexion", hello: "Connecté·e :", pwBtn: "Mot de passe",
       badLogin: "E-mail ou mot de passe incorrect.", needBoth: "Indique ton e-mail et ton mot de passe.", needEmail: "Indique d'abord ton e-mail.",
       resetSent: "Si ce compte existe, un e-mail de réinitialisation est parti.", pwShort: "Au moins 10 caractères.", pwDiff: "Les deux mots de passe ne correspondent pas.",
       pwOk: "Mot de passe enregistré.", needTitle: "Indique la tâche.", fail: "Échec, réessaie. ", offline: "Connexion à la base impossible.",
@@ -22,7 +22,7 @@
       search: "Suchen", allOwners: "Alle Verantwortlichen", allCats: "Alle Kategorien", mine: "Meine Pendenzen", onlyNews: "Nur Neues",
       add: "Neue Pendenz", edit: "Bearbeiten", newTask: "Neue Pendenz", editTask: "Pendenz bearbeiten", del: "Löschen", delSure: "Wirklich löschen?",
       noDate: "ohne Datum", lateTag: "überfällig", by: "von", isNew: "Neu", isMod: "Geändert", isDone: "Erledigt", empty: "Keine Pendenzen für diesen Filter.",
-      saved: "Gespeichert", deleted: "Gelöscht", update: "Aktualisierung erhalten", logout: "Abmelden", hello: "Angemeldet:",
+      saved: "Gespeichert", deleted: "Gelöscht", update: "Aktualisierung erhalten", logout: "Abmelden", hello: "Angemeldet:", pwBtn: "Passwort",
       badLogin: "E-Mail oder Passwort falsch.", needBoth: "Bitte E-Mail und Passwort eingeben.", needEmail: "Bitte zuerst die E-Mail eingeben.",
       resetSent: "Falls das Konto existiert, ist eine E-Mail zum Zurücksetzen unterwegs.", pwShort: "Mindestens 10 Zeichen.", pwDiff: "Die beiden Passwörter stimmen nicht überein.",
       pwOk: "Passwort gespeichert.", needTitle: "Bitte die Aufgabe eingeben.", fail: "Fehlgeschlagen, bitte nochmals. ", offline: "Keine Verbindung zur Datenbank.",
@@ -85,7 +85,7 @@
   }
 
   function renderUser(email, name) {
-    el.user.innerHTML = '<span>' + esc(t("hello")) + " <b>" + esc(name || email) + "</b></span>" + '<button class="btn ghost" type="button" id="logoutBtn">' + esc(t("logout")) + "</button>";
+    el.user.innerHTML = '<span>' + esc(t("hello")) + " <b>" + esc(name || email) + "</b></span>" + '<button class="btn ghost" type="button" id="pwBtn">' + esc(t("pwBtn")) + "</button>" + '<button class="btn ghost" type="button" id="logoutBtn">' + esc(t("logout")) + "</button>";
   }
 
   async function load() {
@@ -248,12 +248,15 @@
     const { error } = await client.auth.updateUser({ password: a });
     if (error) { msg("#pwMsg", t("fail") + error.message, true); return; }
     $("#pw1").value = ""; $("#pw2").value = ""; needPw = false; toast(t("pwOk"));
+    if (me) { view("app"); return; }
     const { data } = await client.auth.getSession(); onSession(data.session);
   });
 
   document.addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
     if (b.id === "logoutBtn") { stopLive(); client.auth.signOut(); return; }
+    if (b.id === "pwBtn") { view("pw"); el.user.hidden = false; $("#pwCancel").hidden = !me; msg("#pwMsg", ""); return; }
+    if (b.id === "pwCancel") { needPw = false; if (me) view("app"); return; }
     if (!me) return;
     if (b.dataset.sum) { const k = b.dataset.sum; f.news = k === "news" ? !f.news : false; f.late = k === "late" ? !f.late : false; if (k === "late") f.st = "open"; else if (k !== "news") f.st = k; render(); return; }
     if (b.dataset.st) { f.st = b.dataset.st; f.late = false; render(); return; }
@@ -273,6 +276,6 @@
   $("#tForm").addEventListener("submit", saveEditor);
   $("#tModal").addEventListener("click", (e) => { if (e.target.id === "tModal") closeEditor(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#tModal").hidden) closeEditor(); });
-  document.addEventListener("langchange", () => { if (me) { render(); el.user.querySelector("span").innerHTML = esc(t("hello")) + " <b>" + esc(me.name) + "</b>"; el.user.querySelector("button").textContent = t("logout"); } });
+  document.addEventListener("langchange", () => { if (me) { render(); el.user.querySelector("span").innerHTML = esc(t("hello")) + " <b>" + esc(me.name) + "</b>"; $("#pwBtn").textContent = t("pwBtn"); $("#logoutBtn").textContent = t("logout"); } });
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && me) load(); });
 })();

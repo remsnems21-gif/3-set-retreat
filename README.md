@@ -31,7 +31,8 @@ Im Supabase-Dashboard des Projekts `3-set-retreat`:
 
 1. **Authentication → URL Configuration:** «Site URL» und «Redirect URLs» auf die GitHub-Pages-Adresse setzen (z. B. `https://remsnems21-gif.github.io/3-set-retreat/`). Nötig für Einladungs- und Passwort-Mails.
 2. **Authentication → Sign In / Providers:** «Allow new users to sign up» **ausschalten**. E-Mail/Passwort eingeschaltet lassen, Mindestlänge 10 oder mehr.
-3. **Authentication → Users → Add user → Send invitation** für Rémy, Mathieu und Mel. Der Einladungslink führt in die App, dort wird das Passwort gesetzt. (Der Standard-Mailversand von Supabase ist auf wenige Mails pro Stunde begrenzt. Alternativ: «Create new user» mit Passwort und dieses persönlich weitergeben.)
+3. **Authentication → Users → Add user → Create new user** für Rémy, Mathieu und Mel: E-Mail, vorläufiges Passwort, «Auto Confirm User» aktiv. Das Passwort persönlich weitergeben; in der App lässt es sich unter «Mot de passe / Passwort» ändern.
+   Hinweis: Ohne eigenen SMTP-Server verschickt Supabase Mails (Einladung, Passwort vergessen) nur an Mitglieder des Supabase-Teams der Organisation und nur wenige pro Stunde. Für Einladungs- und Passwort-Mails an alle einen eigenen SMTP-Server unter **Authentication → Emails → SMTP Settings** einrichten.
 4. Jedes Konto im **SQL Editor** freischalten (ein Konto allein gibt noch keinen Zugriff):
 
    ```sql
@@ -55,4 +56,5 @@ Row Level Security nie ausschalten und keine öffentlichen Lese- oder Schreibrec
 
 - Sprache FR/DE und Partnertyp (Padelhalle, Hotel, Sponsor) in der Seitenleiste bzw. im Menü.
 - «Mode présentation / Präsentationsmodus» blendet den internen Teil aus; Pfeiltasten blättern.
+- Passwort ändern: im Team-Bereich oben «Mot de passe / Passwort».
 - Pendenzen: Status direkt in der Liste ändern, Titel antippen zum Bearbeiten, «+ Nouvelle tâche» zum Hinzufügen. Änderungen der anderen erscheinen live; neue, geänderte und erledigte Einträge seit dem letzten Besuch sind markiert.
