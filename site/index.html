@@ -7,7 +7,7 @@
 <title>3 SET RETREAT Pitch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Oswald:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Oswald:wght@500;600;700&family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;700&display=swap">
 <style>
 /* VOICE  pitch aux partenaires (halles, hôtels, sponsors) : direct, énergique, bienveillant
    IDEA   un tableau de score de padel : trois sets, chaque jour est un set
@@ -379,6 +379,36 @@ button{font:inherit;color:inherit}
 .lg-row .ap svg{width:100%;height:auto}
 .lg-b{padding:16px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
 .lg-b h3{font-size:22px}
+.lg-row .mn{--cut:var(--acc)}
+.vers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:1020px){.vers{grid-template-columns:minmax(0,1fr)}}
+.vr{border-radius:18px;border:1px solid var(--line);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.vr.cur,.fc.cur{border:2px solid var(--fg)}
+.vr-p{background:var(--ink);color:var(--paper);padding:20px 18px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.vr-p .lk{display:flex;align-items:center;gap:12px}
+.vr-p svg{width:66px;height:55px;flex:none}
+.vr-p .wmk{font:700 21px/1 var(--vf);letter-spacing:.01em}
+.vr-p .tg{font:600 23px/1.12 var(--vf)}
+.vr-p .cta{align-self:flex-start;background:var(--acc);color:var(--onacc);font:700 14px var(--vt);padding:7px 14px;border-radius:999px;margin-top:auto}
+.vr[data-vc=club] .vr-p .cta{border-radius:0}
+.vr[data-vc=club] .vr-p .wmk,.vr[data-vc=club] .vr-p .tg{text-transform:uppercase;font-weight:800}
+.vr[data-vc=thermes] .vr-p .tg{font-weight:500}
+.vr-b{padding:16px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.vr-b h3{font-size:24px}
+.vr-b dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:14px}
+.vr-b dt{color:var(--mut)}
+.fonts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:900px){.fonts{grid-template-columns:minmax(0,1fr)}}
+.fc{padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;gap:10px}
+.fc h3{font-size:22px}
+.fc .fd{font-size:32px;line-height:1.05;font-weight:600}
+.fc .ft{font-size:16px}
+.fc .fn{font-size:14px;color:var(--mut)}
+/* versions : formes */
+:root[data-ver=club] *,:root[data-ver=club] *::before,:root[data-ver=club] *::after{border-radius:0!important}
+:root[data-ver=club] h1,:root[data-ver=club] h2,:root[data-ver=club] h3{text-transform:uppercase;font-weight:800;letter-spacing:-.01em}
+:root[data-ver=thermes] h1,:root[data-ver=thermes] h2,:root[data-ver=thermes] h3{font-weight:500;letter-spacing:-.015em}
+:root[data-ver=thermes] :is(.score,.day,.taskcard,.gap,.panel,.fg,.pal,.lg,.vr,.fc,.steps li,.tsum button,.task){border-radius:30px}
 </style>
 </head>
 <body>
@@ -720,12 +750,17 @@ button{font:inherit;color:inherit}
   <div class="band"><div class="wrap">
     <div class="vhead"><div><h2><span lang="fr">Couleurs et logo</span><span lang="de">Farben und Logo</span></h2><p class="lede"><span lang="fr">Choisis une palette ou un logo&nbsp;: toute l'app change tout de suite, seulement sur cet appareil. Pour décider ensemble, chacun note les options dans la grille.</span><span lang="de">Wähle eine Palette oder ein Logo: Die ganze App ändert sich sofort, nur auf diesem Gerät. Zum gemeinsamen Entscheiden bewertet jede Person die Optionen im Raster.</span></p></div></div>
     <div class="bnow"><p id="bNow"></p><button class="btn ghost" type="button" data-breset><span lang="fr">Revenir à l'actuel</span><span lang="de">Zurück zum aktuellen Stand</span></button><a class="btn" href="https://claude.ai/artifact/5zCfLjesdcf5cxKEggj5v9" target="_blank" rel="noopener"><span lang="fr">Grille de décision</span><span lang="de">Entscheidungsraster</span><svg class="ic"><use href="#i-out"/></svg></a></div>
-    <h3 class="sub"><span lang="fr">Quatre palettes</span><span lang="de">Vier Paletten</span></h3>
+    <h3 class="sub"><span lang="fr">Trois versions complètes</span><span lang="de">Drei komplette Versionen</span></h3>
+    <div class="vers" id="vers"></div>
+    <p class="hint"><span lang="fr">Une version change tout d'un coup&nbsp;: couleurs, typo, logo, formes et image d'accueil. Ensuite, chaque élément peut encore être changé séparément ci-dessous.</span><span lang="de">Eine Version ändert alles auf einmal: Farben, Schrift, Logo, Formen und Startbild. Danach lässt sich jedes Element unten noch einzeln wechseln.</span></p>
+    <h3 class="sub"><span lang="fr">Six palettes</span><span lang="de">Sechs Paletten</span></h3>
     <div class="pals" id="pals"></div>
     <p class="hint"><span lang="fr">Contraste selon WCAG 2.2&nbsp;: 4,5:1 pour le texte normal, 3:1 pour les grands titres et les éléments graphiques, le logo n'est pas concerné. Sur fond clair, le texte en couleur d'accent prend une variante plus foncée.</span><span lang="de">Kontrast nach WCAG 2.2: 4,5:1 für normalen Text, 3:1 für grosse Titel und grafische Elemente, das Logo ist ausgenommen. Auf hellem Grund nimmt Text in der Akzentfarbe eine dunklere Variante.</span></p>
-    <h3 class="sub"><span lang="fr">Cinq logos</span><span lang="de">Fünf Logos</span></h3>
+    <h3 class="sub"><span lang="fr">Trois typographies</span><span lang="de">Drei Schriftpaare</span></h3>
+    <div class="fonts" id="fonts"></div>
+    <h3 class="sub"><span lang="fr">Sept logos</span><span lang="de">Sieben Logos</span></h3>
     <div class="logos" id="logos"></div>
-    <p class="hint"><span lang="fr">Les quatre nouveaux logos sont des esquisses. Avant de choisir&nbsp;: recherche de marque (Swissreg, puis professionnelle) et finition dans un outil vectoriel.</span><span lang="de">Die vier neuen Logos sind Skizzen. Vor dem Entscheid: Markenrecherche (Swissreg, danach professionell) und Feinschliff in einem Vektorprogramm.</span></p>
+    <p class="hint"><span lang="fr">Les six nouveaux logos sont des esquisses. Avant de choisir&nbsp;: recherche de marque (Swissreg, puis professionnelle) et finition dans un outil vectoriel.</span><span lang="de">Die sechs neuen Logos sind Skizzen. Vor dem Entscheid: Markenrecherche (Swissreg, danach professionell) und Feinschliff in einem Vektorprogramm.</span></p>
   </div></div>
 </section>
 </main>
@@ -810,7 +845,7 @@ function setLang(l){st.l=l;root.dataset.l=l;root.lang=l;$$('[data-lang]').forEac
 function setP(p){st.p=p;root.dataset.p=p;$$('[data-pick]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.pick===p));save()}
 function setPres(on){st.pres=on;root.classList.toggle('pres',on);$$('[data-pres]').forEach(b=>b.innerHTML=on?'<span lang="fr">Quitter la présentation</span><span lang="de">Präsentation beenden</span>':'<span lang="fr">Mode présentation</span><span lang="de">Präsentationsmodus</span>');save();buildPn();if(on&&['#taches','#marque'].includes(location.hash))location.hash='accueil';else show(true)}
 
-function scene(){
+function sceneAlpin(){
  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const ARC='M300 330 Q560 -230 800 420';
  const wave=(y,a,l)=>{let d='M0 '+y;for(let x=0;x<1200;x+=l)d+=' q'+(l/4)+' '+(-a)+' '+(l/2)+' 0 t'+(l/2)+' 0';return d+' L1200 480 L0 480Z'};
@@ -849,7 +884,7 @@ function show(keep){
 function go(d){const vis=visible();let i=vis.findIndex(x=>x.v===location.hash.slice(1));if(i<0)i=0;const j=Math.min(vis.length-1,Math.max(0,i+d));if(j!==i)location.hash=vis[j].v}
 function countdown(){const t=new Date();t.setHours(0,0,0,0);const dd=s=>Math.max(0,Math.round((new Date(s+'T00:00:00')-t)/864e5));$('#cdGo').textContent=dd('2027-01-31');$('#cdPil').textContent=dd('2027-03-19')}
 
-/* marque : palettes et logos en direct */
+/* marque : versions, palettes, typos et logos en direct */
 const PAL=[
  {id:'thermal',name:'Thermal',cur:1,t:'#B54D16',c:{ink:['#10262E','Bleu nuit','Nachtblau'],acc:['#E8793F','Abricot','Aprikose'],sup:['#5FB3B0','Eau thermale','Thermalwasser'],paper:['#F5F0E6','Sable','Sand']},
   pro:['Calme et haut de gamme, l’abricot apporte l’énergie. Fait le lien avec les bains.','Ruhig und hochwertig, die Aprikose bringt Energie. Passt zu den Thermalbädern.'],con:['Proche de beaucoup de marques wellness.','Ähnlich wie viele Wellness-Marken.']},
@@ -858,10 +893,19 @@ const PAL=[
  {id:'alpin',name:'Alpin',t:'#A55627',c:{ink:['#1C3830','Sapin','Tanne'],acc:['#CF6E36','Cuivre','Kupfer'],sup:['#8FC9CE','Glacier','Gletscher'],paper:['#F1ECE2','Lin','Leinen']},
   pro:['Montagne et nature, très retreat. Chaleureuse et crédible.','Berge und Natur, sehr Retreat. Warm und glaubwürdig.'],con:['Peut rappeler une marque outdoor. Texte des boutons un peu faible.','Erinnert an eine Outdoor-Marke. Buttontext etwas schwach.']},
  {id:'crepuscule',name:'Crépuscule',t:'#D92200',c:{ink:['#2A1C35','Prune','Pflaume'],acc:['#FF6B4F','Corail','Koralle'],sup:['#8DB8A3','Sauge','Salbei'],paper:['#FBF3EA','Crème','Creme']},
-  pro:['Chaleureuse et lifestyle, se démarque des clubs de padel.','Warm und Lifestyle, hebt sich von Padel-Clubs ab.'],con:['Moins lisible comme offre sportive.','Wirkt weniger klar als Sportangebot.']}
+  pro:['Chaleureuse et lifestyle, se démarque des clubs de padel.','Warm und Lifestyle, hebt sich von Padel-Clubs ab.'],con:['Moins lisible comme offre sportive.','Wirkt weniger klar als Sportangebot.']},
+ {id:'club',name:'Club',t:'#D7261E',c:{ink:['#16181B','Graphite','Graphit'],acc:['#D7261E','Rouge signal','Signalrot'],sup:['#7E8C9A','Gris béton','Betongrau'],paper:['#F4F4F1','Blanc','Weiss']},
+  pro:['Très sportive et très suisse, se lit de loin.','Sehr sportlich und sehr schweizerisch, auf Distanz gut lesbar.'],con:['Rouge et blanc&nbsp;: éviter tout ce qui ressemble à un drapeau ou à une marque nationale.','Rot und Weiss: alles vermeiden, was nach Fahne oder Landesmarke aussieht.']},
+ {id:'thermes',name:'Thermes',t:'#936329',c:{ink:['#3B2A20','Café','Kaffee'],acc:['#C98A3D','Ocre','Ocker'],sup:['#8FC3CC','Bleu bain','Badblau'],paper:['#F7F1E7','Crème','Creme']},
+  pro:['Chaleureuse et haut de gamme, très «&nbsp;retreat&nbsp;».','Warm und hochwertig, sehr «Retreat».'],con:['Moins sportive, le padel passe au second plan.','Weniger sportlich, Padel rückt in den Hintergrund.']}
 ];
-const LM='var(--lr,var(--paper))',LA='var(--acc)',LS='var(--sup)',LF='font-family="Oswald, Arial Narrow, sans-serif" font-weight="600"';
-function ring(t,r,c,step,top,size){let s='';const n=t.length;for(let i=0;i<n;i++){if(t[i]===' ')continue;const a=top?c+(i-(n-1)/2)*step:c-(i-(n-1)/2)*step,rad=a*Math.PI/180,x=(150+r*Math.cos(rad)).toFixed(1),y=(125+r*Math.sin(rad)).toFixed(1),rot=(top?a+90:a-90).toFixed(1);s+='<text x="'+x+'" y="'+y+'" transform="rotate('+rot+' '+x+' '+y+')" text-anchor="middle" dominant-baseline="central" font-size="'+size+'">'+t[i]+'</text>'}return s}
+const FONTS=[
+ {id:'match',cur:1,n:'Match',d:"'Oswald','Arial Narrow',sans-serif",t:"'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif",fn:'Oswald + DM Sans',x:['Condensée et sportive, comme un tableau de score.','Schmal und sportlich, wie eine Anzeigetafel.']},
+ {id:'club',n:'Club',d:"'Archivo','Arial',sans-serif",t:"'Inter',system-ui,-apple-system,'Segoe UI',sans-serif",fn:'Archivo + Inter',x:['Grotesque nette et lourde, très lisible, esprit suisse.','Klare, kräftige Grotesk, sehr gut lesbar, Schweizer Stil.']},
+ {id:'thermes',n:'Thermes',d:"'Fraunces',Georgia,serif",t:"'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif",fn:'Fraunces + Manrope',x:['Serif douce et chaleureuse, comme un magazine d’hôtel.','Weiche, warme Serifenschrift wie in einem Hotelmagazin.']}
+];
+const LM='var(--lr,var(--paper))',LA='var(--acc)',LS='var(--sup)',LC='var(--cut,var(--lr,var(--paper)))';
+function arcD(r,a1,a2){const p=a=>{const t=a*Math.PI/180;return (150+r*Math.cos(t)).toFixed(1)+' '+(125+r*Math.sin(t)).toFixed(1)};return 'M'+p(a1)+' A'+r+' '+r+' 0 '+((a2-a1)>180?1:0)+' 1 '+p(a2)}
 const LOGOS=[
  {id:'lignes',cur:1,n:['Trois lignes','Drei Linien'],d:['Crête, trajectoire de balle et onde&nbsp;: les trois piliers dessinés comme un paysage.','Bergkamm, Ballflugbahn und Welle: die drei Pfeiler als Landschaft gezeichnet.'],
   svg:'<polyline points="16,206 98,78 144,132 196,46 284,206" fill="none" style="stroke:'+LM+'" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 186 Q140 -20 236 110" fill="none" style="stroke:'+LA+'" stroke-width="7" stroke-dasharray="14 12" stroke-linecap="round"/><circle cx="236" cy="110" r="14" style="fill:'+LA+'"/><path d="M16 234 C46 216 76 252 106 234 S166 216 196 234 S256 252 284 234" fill="none" style="stroke:'+LS+'" stroke-width="7" stroke-linecap="round"/>'},
@@ -871,8 +915,17 @@ const LOGOS=[
   svg:'<rect x="26" y="50" width="248" height="150" rx="28" fill="none" style="stroke:'+LM+'" stroke-width="12"/><path d="M109 50V200M191 50V200" style="stroke:'+LM+'" stroke-width="8"/><polyline points="44,158 60,122 71,136 84,104 94,158" fill="none" style="stroke:'+LM+'" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/><path d="M124 160Q146 78 170 118" fill="none" style="stroke:'+LA+'" stroke-width="9" stroke-linecap="round" stroke-dasharray="11 9"/><circle cx="174" cy="124" r="9" style="fill:'+LA+'"/><path d="M206 112C215 102 224 122 233 112S251 102 260 112M206 140C215 130 224 150 233 140S251 130 260 140" fill="none" style="stroke:'+LS+'" stroke-width="9" stroke-linecap="round"/>'},
  {id:'trois',n:['Le 3','Die 3'],d:['Le chiffre 3 d’un seul geste&nbsp;: le haut en trajectoire, le bas en force, une onde dessous. Lisible même tout petit.','Die Ziffer 3 in einem Zug: oben die Flugbahn, unten die Kraft, darunter eine Welle. Auch ganz klein lesbar.'],
   svg:'<path d="M96 64C108 38 140 30 164 36C194 44 200 86 174 100C164 105 154 107 146 107" fill="none" style="stroke:'+LA+'" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M146 107C186 107 214 126 212 158C210 196 164 208 128 200C108 196 96 186 88 174" fill="none" style="stroke:'+LM+'" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M92 230C106 220 120 240 134 230S162 220 176 230S204 240 218 230" fill="none" style="stroke:'+LS+'" stroke-width="12" stroke-linecap="round"/>'},
- {id:'sceau',n:['Sceau','Siegel'],d:['Un sceau rond avec le nom et le lieu, pour les goodies, le textile et le print. Tout petit, seul le 3 reste lisible.','Ein rundes Siegel mit Name und Ort, für Goodies, Textil und Druck. Ganz klein bleibt nur die 3 lesbar.'],
-  svg:'<circle cx="150" cy="125" r="114" fill="none" style="stroke:'+LM+'" stroke-width="6"/><circle cx="150" cy="125" r="80" fill="none" style="stroke:'+LM+'" stroke-width="3"/><g '+LF+' style="fill:'+LM+'">'+ring('3 SET RETREAT',97,-90,8.6,true,21)+ring('VALAIS · WALLIS',97,90,7.2,false,17)+'</g><circle cx="53" cy="125" r="4.5" style="fill:'+LA+'"/><circle cx="247" cy="125" r="4.5" style="fill:'+LA+'"/><text x="150" y="116" text-anchor="middle" dominant-baseline="central" '+LF+' font-size="100" style="fill:'+LA+'">3</text><path d="M124 180C132 173 140 187 148 180S164 173 172 180" fill="none" style="stroke:'+LS+'" stroke-width="6" stroke-linecap="round"/>'}
+ {id:'arcs',n:['Trois arcs','Drei Bögen'],d:['Trois arcs forment un cercle&nbsp;: épais pour la force, moyen pour le padel, fin pour la récupération. Seuls, ils ne disent rien, ensemble ils font le signe.','Drei Bögen bilden einen Kreis: dick für Kraft, mittel für Padel, fein für Erholung. Einzeln sagen sie nichts, zusammen ergeben sie das Zeichen.'],
+  svg:'<path d="'+arcD(88,160,256)+'" fill="none" style="stroke:'+LM+'" stroke-width="34" stroke-linecap="round"/><path d="'+arcD(88,280,376)+'" fill="none" style="stroke:'+LA+'" stroke-width="26" stroke-linecap="round"/><path d="'+arcD(88,40,136)+'" fill="none" style="stroke:'+LS+'" stroke-width="18" stroke-linecap="round"/>'},
+ {id:'set3',n:['3 | SET','3 | SET'],d:['Un logo purement typographique&nbsp;: le 3, un filet en pointillé, puis SET. Pour l’icône, seul le 3 reste.','Ein reines Schriftlogo: die 3, ein gestricheltes Netz, dann SET. Für das App-Icon bleibt nur die 3.'],
+  svg:'<g font-family="Archivo, Arial, sans-serif" font-weight="800"><text x="78" y="166" text-anchor="end" font-size="112" style="fill:'+LA+'">3</text><text x="102" y="166" font-size="84" textLength="180" lengthAdjust="spacing" style="fill:'+LM+'">SET</text></g><path d="M91 70V184" fill="none" style="stroke:'+LS+'" stroke-width="7" stroke-dasharray="10 8"/><path d="M14 206H286" fill="none" style="stroke:'+LS+'" stroke-width="6"/>'},
+ {id:'horizon',n:['Horizon','Horizont'],d:['Un disque plein&nbsp;: soleil du Valais ou balle, avec la montagne et l’eau. Fonctionne comme un emblème ou un tampon.','Eine volle Scheibe: Walliser Sonne oder Ball, mit Berg und Wasser. Funktioniert als Emblem oder Stempel.'],
+  svg:'<circle cx="150" cy="125" r="100" style="fill:'+LA+'"/><path d="M54 150L105 100L130 128L170 78L246 150A100 100 0 0 1 54 150Z" style="fill:'+LS+'"/><polyline points="54,150 105,100 130,128 170,78 246,150" fill="none" style="stroke:'+LC+'" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M82 178C94 170 106 186 118 178S142 170 154 178S178 186 190 178S206 172 218 178M104 202C114 195 124 209 134 202S154 195 164 202S184 209 194 202" fill="none" style="stroke:'+LC+'" stroke-width="7" stroke-linecap="round"/>'}
+];
+const VERS=[
+ {id:'actuelle',main:1,n:['Alpin sportif','Alpin sportlich'],pal:'thermal',logo:'lignes',font:'match',f:['Coins arrondis, panorama alpin','Runde Ecken, Alpenpanorama'],d:['La version actuelle&nbsp;: montagne, bains thermaux et énergie du padel.','Die heutige Version: Berge, Thermalbad und Padel-Energie.']},
+ {id:'club',n:['Club','Club'],pal:'club',logo:'set3',font:'club',f:['Angles nets, grand chiffre, lignes du court','Klare Kanten, grosse Ziffer, Court-Linien'],d:['Précision du sport suisse&nbsp;: graphite, blanc et rouge signal. Direct et sportif.','Schweizer Sportpräzision: Graphit, Weiss und Signalrot. Direkt und sportlich.']},
+ {id:'thermes',n:['Thermes','Thermes'],pal:'thermes',logo:'arcs',font:'thermes',f:['Formes douces, arches, eau','Weiche Formen, Bögen, Wasser'],d:['Retreat chaleureux, comme un magazine d’hôtel&nbsp;: café, ocre et bleu des bains.','Warmes Retreat wie ein Hotelmagazin: Kaffee, Ocker und Badblau.']}
 ];
 function lumB(h){const n=parseInt(h.slice(1),16);return [n>>16&255,n>>8&255,n&255].map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0)}
 function ratioB(a,b){const x=lumB(a),y=lumB(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
@@ -880,41 +933,79 @@ function onAccB(p){return ratioB(p.c.acc[0],p.c.ink[0])>=ratioB(p.c.acc[0],p.c.p
 function biB(a){return '<span lang="fr">'+a[0]+'</span><span lang="de">'+a[1]+'</span>'}
 function badgeB(v,need){if(v>=4.5)return '<span class="ok2">OK</span>';if(v>=3)return '<span class="mid2">'+(need==='g'?'OK':biB(['Grands titres','Grosse Titel']))+'</span>';return '<span class="bad2">'+biB(['Trop faible','Zu schwach'])+'</span>'}
 function useB(id){return '<svg viewBox="0 0 300 250" aria-hidden="true"><use href="#'+id+'" width="300" height="250"/></svg>'}
-function injectLogos(){const d=$('svg.defs defs');d.insertAdjacentHTML('beforeend',LOGOS.map(L=>'<symbol id="lg-'+L.id+'" viewBox="0 0 300 250">'+L.svg+'</symbol>').join(''))}
-function applyPal(id){const p=PAL.find(x=>x.id===id)||PAL[0];st.pal=p.id;const r=root.style;
+function palVars(p){const c=p.c;return '--ink:'+c.ink[0]+';--acc:'+c.acc[0]+';--sup:'+c.sup[0]+';--paper:'+c.paper[0]+';--onacc:'+onAccB(p)+';--acct:'+p.t}
+const byId=(a,id)=>a.find(x=>x.id===id)||a[0];
+function injectLogos(){$('svg.defs defs').insertAdjacentHTML('beforeend',LOGOS.map(L=>'<symbol id="lg-'+L.id+'" viewBox="0 0 300 250">'+L.svg+'</symbol>').join(''))}
+function applyPal(id){const p=byId(PAL,id);st.pal=p.id;const r=root.style;
  r.setProperty('--ink',p.c.ink[0]);r.setProperty('--acc',p.c.acc[0]);r.setProperty('--sup',p.c.sup[0]);r.setProperty('--paper',p.c.paper[0]);r.setProperty('--onacc',onAccB(p));r.setProperty('--acc-t',p.t);
  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=p.c.ink[0];save();markBrand()}
-function applyLogo(id){const L=LOGOS.find(x=>x.id===id)||LOGOS[0];st.logo=L.id;$('#logo').innerHTML=L.svg;save();markBrand()}
+function applyLogo(id){const L=byId(LOGOS,id);st.logo=L.id;$('#logo').innerHTML=L.svg;save();markBrand()}
+function applyFont(id){const f=byId(FONTS,id);st.font=f.id;root.style.setProperty('--fd',f.d);root.style.setProperty('--ft',f.t);save();markBrand()}
+function applyVersion(id){const v=byId(VERS,id);st.ver=v.id;root.dataset.ver=v.id;applyPal(v.pal);applyLogo(v.logo);applyFont(v.font);scene();markBrand()}
 function markBrand(){
- const p=PAL.find(x=>x.id===st.pal)||PAL[0],L=LOGOS.find(x=>x.id===st.logo)||LOGOS[0];
- const now=$('#bNow');if(now)now.innerHTML='<span lang="fr">Affiché maintenant&nbsp;: palette <b>'+p.name+'</b> · logo <b>'+L.n[0]+'</b></span><span lang="de">Jetzt angezeigt: Palette <b>'+p.name+'</b> · Logo <b>'+L.n[1]+'</b></span>';
- $$('[data-pc]').forEach(c=>c.classList.toggle('cur',c.dataset.pc===p.id));$$('[data-lc]').forEach(c=>c.classList.toggle('cur',c.dataset.lc===L.id));
- $$('[data-apal]').forEach(b=>{const on=b.dataset.apal===p.id;b.setAttribute('aria-pressed',on);b.innerHTML=on?biB(['Appliquée','Angewendet']):biB(['Appliquer à l’app','In der App anwenden'])});
- $$('[data-alogo]').forEach(b=>{const on=b.dataset.alogo===L.id;b.setAttribute('aria-pressed',on);b.innerHTML=on?biB(['Appliqué','Angewendet']):biB(['Appliquer à l’app','In der App anwenden'])});
+ const v=byId(VERS,st.ver),p=byId(PAL,st.pal),L=byId(LOGOS,st.logo),f=byId(FONTS,st.font);
+ const mod=(p.id!==v.pal||L.id!==v.logo||f.id!==v.font);
+ const now=$('#bNow');if(now)now.innerHTML='<span lang="fr">Affiché maintenant&nbsp;: version <b>'+v.n[0]+'</b>'+(mod?' (modifiée)':'')+' · palette <b>'+p.name+'</b> · logo <b>'+L.n[0]+'</b> · typo <b>'+f.n+'</b></span><span lang="de">Jetzt angezeigt: Version <b>'+v.n[1]+'</b>'+(mod?' (angepasst)':'')+' · Palette <b>'+p.name+'</b> · Logo <b>'+L.n[1]+'</b> · Schrift <b>'+f.n+'</b></span>';
+ const mark=(attr,cur,on,off)=>$$('['+attr+']').forEach(b=>{const x=b.getAttribute(attr)===cur;b.setAttribute('aria-pressed',x);b.innerHTML=x?biB(on):biB(off)});
+ $$('[data-vc]').forEach(c=>c.classList.toggle('cur',c.dataset.vc===v.id&&!mod));
+ $$('[data-pc]').forEach(c=>c.classList.toggle('cur',c.dataset.pc===p.id));
+ $$('[data-lc]').forEach(c=>c.classList.toggle('cur',c.dataset.lc===L.id));
+ $$('[data-fc]').forEach(c=>c.classList.toggle('cur',c.dataset.fc===f.id));
+ mark('data-aver',mod?'':v.id,['Appliquée','Angewendet'],['Appliquer la version','Version anwenden']);
+ mark('data-apal',p.id,['Appliquée','Angewendet'],['Appliquer à l’app','In der App anwenden']);
+ mark('data-alogo',L.id,['Appliqué','Angewendet'],['Appliquer à l’app','In der App anwenden']);
+ mark('data-afont',f.id,['Appliquée','Angewendet'],['Appliquer à l’app','In der App anwenden']);
 }
 function renderBrand(){
- const box=$('#pals');if(!box)return;
- box.innerHTML=PAL.map(p=>{const c=p.c,oa=onAccB(p);
-  const vars='--ink:'+c.ink[0]+';--acc:'+c.acc[0]+';--sup:'+c.sup[0]+';--paper:'+c.paper[0]+';--onacc:'+oa+';--acct:'+p.t;
+ const box=$('#vers');if(!box)return;
+ const tag=t=>'<span class="tag2">'+biB(t)+'</span>';
+ box.innerHTML=VERS.map(v=>{const p=byId(PAL,v.pal),L=byId(LOGOS,v.logo),f=byId(FONTS,v.font);
+  return '<article class="vr" data-vc="'+v.id+'"><div class="vr-p" style="'+palVars(p)+';--vf:'+f.d+';--vt:'+f.t+'"><div class="lk">'+useB('lg-'+L.id)+'<b class="wmk">3 SET RETREAT</b></div><p class="tg">'+biB(['Trois jours. Trois sets. Un nouveau jeu.','Drei Tage. Drei Sätze. Ein neues Spiel.'])+'</p><span class="cta">'+biB(['S’inscrire','Anmelden'])+'</span></div>'
+  +'<div class="vr-b"><div class="pal-h"><h3>'+biB(v.n)+'</h3>'+(v.main?tag(['version principale','Hauptversion']):'')+'</div><p>'+biB(v.d)+'</p>'
+  +'<dl><dt>'+biB(['Couleurs','Farben'])+'</dt><dd>'+p.name+'</dd><dt>'+biB(['Typo','Schrift'])+'</dt><dd>'+f.fn+'</dd><dt>Logo</dt><dd>'+biB(L.n)+'</dd><dt>'+biB(['Formes','Formen'])+'</dt><dd>'+biB(v.f)+'</dd></dl>'
+  +'<div class="acts2"><button class="btn" type="button" data-aver="'+v.id+'"></button></div></div></article>'}).join('');
+ $('#pals').innerHTML=PAL.map(p=>{const c=p.c,oa=onAccB(p);
   const checks=[[['Texte sur fond clair','Text auf hellem Grund'],c.ink[0],c.paper[0],'t'],[['Texte des boutons','Buttontext'],oa,c.acc[0],'t'],[['Accent en texte, original','Akzent als Text, Original'],c.acc[0],c.paper[0],'t'],[['Accent en texte, variante '+p.t,'Akzent als Text, Variante '+p.t],p.t,c.paper[0],'t'],[['Accent sur fond foncé','Akzent auf dunklem Grund'],c.acc[0],c.ink[0],'g']];
-  return '<article class="pal" data-pc="'+p.id+'"><div class="pal-h"><h3>'+p.name+'</h3>'+(p.cur?'<span class="tag2">'+biB(['actuelle','aktuell'])+'</span>':'')+'</div>'
+  return '<article class="pal" data-pc="'+p.id+'"><div class="pal-h"><h3>'+p.name+'</h3>'+(p.cur?tag(['actuelle','aktuell']):'')+'</div>'
   +'<div class="sw">'+['ink','acc','sup','paper'].map(k=>'<div><i style="background:'+c[k][0]+'"></i><b>'+biB([c[k][1],c[k][2]])+'</b><code>'+c[k][0]+'</code></div>').join('')+'</div>'
-  +'<div class="pv" style="'+vars+'"><div class="pv-d">'+useB('logo')+'<p class="h">'+biB(['Trois jours. Trois sets.','Drei Tage. Drei Sätze.'])+'</p><span class="cta">'+biB(['S’inscrire','Anmelden'])+'</span></div><div class="pv-l"><span class="d">19–21.03.2027</span><span>'+biB(['Jouer plus fort et mieux récupérer.','Stärker spielen, besser erholen.'])+'</span><span class="bar"></span></div></div>'
+  +'<div class="pv" style="'+palVars(p)+'"><div class="pv-d">'+useB('logo')+'<p class="h">'+biB(['Trois jours. Trois sets.','Drei Tage. Drei Sätze.'])+'</p><span class="cta">'+biB(['S’inscrire','Anmelden'])+'</span></div><div class="pv-l"><span class="d">19–21.03.2027</span><span>'+biB(['Jouer plus fort et mieux récupérer.','Stärker spielen, besser erholen.'])+'</span><span class="bar"></span></div></div>'
   +'<p class="pro">+ '+biB(p.pro)+'</p><p class="con">– '+biB(p.con)+'</p>'
   +'<ul class="cc">'+checks.map(k=>{const v=ratioB(k[1],k[2]);return '<li><span class="sq" style="background:'+k[2]+';color:'+k[1]+'">Aa</span>'+biB(k[0])+'<span class="r">'+v.toFixed(2).replace('.',',')+':1</span>'+badgeB(v,k[3])+'</li>'}).join('')+'</ul>'
   +'<div class="acts2"><button class="btn" type="button" data-apal="'+p.id+'"></button></div></article>'}).join('');
+ $('#fonts').innerHTML=FONTS.map(f=>'<article class="fc" data-fc="'+f.id+'"><div class="pal-h"><h3>'+f.n+'</h3>'+(f.cur?tag(['actuelle','aktuell']):'')+'</div><p class="fd" style="font-family:'+f.d+'">'+biB(['Trois jours. Trois sets.','Drei Tage. Drei Sätze.'])+'</p><p class="ft" style="font-family:'+f.t+'">'+biB(['Un week-end pour jouer plus fort, réduire le risque de blessure et mieux récupérer.','Ein Wochenende, um stärker zu spielen, das Verletzungsrisiko zu senken und besser zu erholen.'])+'</p><p class="fn">'+f.fn+' · SIL OFL 1.1</p><p>'+biB(f.x)+'</p><div class="acts2"><button class="btn" type="button" data-afont="'+f.id+'"></button></div></article>').join('');
  $('#logos').innerHTML=LOGOS.map(L=>{const s=useB('lg-'+L.id);
   return '<article class="lg" data-lc="'+L.id+'"><div class="lg-main">'+s+'<div><b>3 SET RETREAT</b><small>'+biB(['Padel · Force · Récupération','Padel · Kraft · Erholung'])+'</small></div></div>'
   +'<div class="lg-row"><figure class="lt">'+s+'<figcaption>'+biB(['Fond clair','Heller Grund'])+'</figcaption></figure><figure class="mn">'+s+'<figcaption>'+biB(['Une couleur','Einfarbig'])+'</figcaption></figure><figure class="px">'+s+'<figcaption>24&nbsp;px</figcaption></figure><figure class="ap"><span>'+s+'</span><figcaption>'+biB(['Icône','App-Icon'])+'</figcaption></figure></div>'
-  +'<div class="lg-b"><div class="pal-h"><h3>'+biB(L.n)+'</h3>'+(L.cur?'<span class="tag2">'+biB(['actuel','aktuell'])+'</span>':'')+'</div><p>'+biB(L.d)+'</p><div class="acts2"><button class="btn" type="button" data-alogo="'+L.id+'"></button></div></div></article>'}).join('');
+  +'<div class="lg-b"><div class="pal-h"><h3>'+biB(L.n)+'</h3>'+(L.cur?tag(['actuel','aktuell']):'')+'</div><p>'+biB(L.d)+'</p><div class="acts2"><button class="btn" type="button" data-alogo="'+L.id+'"></button></div></div></article>'}).join('');
  markBrand();
 }
+function sceneClub(){
+ $('#scene').innerHTML='<svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="1200" height="480" style="fill:var(--ink)"/>'
+ +'<g fill="none" style="stroke:var(--paper)" stroke-width="4" opacity=".85"><rect x="250" y="60" width="800" height="400"/><path d="M372 60V460M928 60V460M372 260H928"/></g>'
+ +'<path d="M650 44V476" style="stroke:var(--sup)" stroke-width="12"/>'
+ +'<text x="170" y="452" style="fill:var(--acc);font-family:var(--fd)" font-weight="800" font-size="540">3</text>'
+ +'<path d="M1010 420Q820 20 600 190" fill="none" style="stroke:var(--paper)" stroke-width="5" stroke-dasharray="16 14" stroke-linecap="round"/><circle cx="596" cy="194" r="15" style="fill:var(--paper)"/></svg>';
+}
+function sceneThermes(){
+ const w=(y,a,l)=>{let d='M0 '+y;for(let x=0;x<1200;x+=l)d+=' q'+(l/4)+' '+(-a)+' '+(l/2)+' 0 t'+(l/2)+' 0';return d+' L1200 480 L0 480Z'};
+ const arch=(r,c,sw)=>'<path d="M'+(600-r)+' 480A'+r+' '+r+' 0 0 1 '+(600+r)+' 480" fill="none" style="stroke:'+c+'" stroke-width="'+sw+'"/>';
+ $('#scene').innerHTML='<svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="1200" height="480" style="fill:var(--ink)"/>'
+ +arch(420,'color-mix(in srgb,var(--sup) 30%,var(--ink))',46)+arch(330,'color-mix(in srgb,var(--sup) 70%,var(--ink))',46)+arch(240,'var(--acc)',46)+arch(150,'color-mix(in srgb,var(--paper) 80%,var(--ink))',46)
+ +'<circle cx="600" cy="480" r="78" style="fill:var(--acc)" opacity=".9"/>'
+ +'<path class="w1" d="'+w(448,8,90)+'"/><path class="w2" d="'+w(464,6,130)+'"/>'
+ +'<path class="steam" d="M560 380 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -38 M600 372 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -30 M640 380 c-12 -14 12 -24 0 -38"/></svg>';
+}
+function scene(){const v=st.ver||'actuelle';if(v==='club')return sceneClub();if(v==='thermes')return sceneThermes();sceneAlpin()}
 document.addEventListener('click',e=>{
+ const vr=e.target.closest('[data-aver]');if(vr){applyVersion(vr.dataset.aver);return}
  const a=e.target.closest('[data-apal]');if(a){applyPal(a.dataset.apal);return}
  const l=e.target.closest('[data-alogo]');if(l){applyLogo(l.dataset.alogo);return}
- if(e.target.closest('[data-breset]')){applyPal('thermal');applyLogo('lignes')}
+ const f=e.target.closest('[data-afont]');if(f){applyFont(f.dataset.afont);return}
+ if(e.target.closest('[data-breset]'))applyVersion('actuelle');
 });
-injectLogos();renderBrand();applyPal(st.pal||'thermal');applyLogo(st.logo||'lignes');
+if(!VERS.some(v=>v.id===st.ver))st.ver='actuelle';
+if(!LOGOS.some(L=>L.id===st.logo))st.logo='lignes';
+root.dataset.ver=st.ver;injectLogos();renderBrand();applyPal(st.pal||'thermal');applyLogo(st.logo);applyFont(st.font||'match');
 
 buildNav();scene();countdown();
 root.dataset.l=st.l;root.lang=st.l;setP(st.p);
