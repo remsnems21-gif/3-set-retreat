@@ -11,7 +11,7 @@
 <style>
 /* VOICE  pitch aux partenaires (halles, hôtels, sponsors) : direct, énergique, bienveillant
    IDEA   un tableau de score de padel : trois sets, chaque jour est un set
-   PICTURE paysage alpin dessiné avec les trois lignes du logo : crête, trajectoire de balle, onde
+   PICTURE le joueur et ses trois pièces : élan (padel), corps (force et nutrition), tête (esprit) ; logo animé qui devient un 3
    COLOUR palette Thermal : Bleu nuit, Abricot, Eau thermale, Sable
    TYPE   Oswald + DM Sans
    LAYOUT laptop : barre latérale foncée + vue ; phone : barre du haut, onglets en bas, une vue à la fois */
@@ -380,7 +380,13 @@ button{font:inherit;color:inherit}
 .lg-b{padding:16px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
 .lg-b h3{font-size:22px}
 .lg-row .mn{--cut:var(--acc)}
-.vers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.vers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.lg-row .lt{--halo:var(--paper)}
+.lg-row .mn{--halo:var(--acc)}
+:root[data-logo=vivant] .brand .b3{display:none}
+:root[data-logo=vivant] .brand svg{width:62px;height:52px;margin:-8px -14px -7px -12px}
+:root[data-logo=vivant] .top .brand svg{width:54px;height:45px;margin:-7px -12px -6px -10px}
+:root:not([data-logo=vivant]) [data-anim]{display:none}
 @media(max-width:1020px){.vers{grid-template-columns:minmax(0,1fr)}}
 .vr{border-radius:18px;border:1px solid var(--line);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
 .vr.cur,.fc.cur{border:2px solid var(--fg)}
@@ -432,7 +438,7 @@ button{font:inherit;color:inherit}
 
 <div class="app">
 <aside class="side">
-  <a class="brand" href="#accueil"><svg viewBox="0 0 300 250"><use href="#logo" width="300" height="250"/></svg><b>3 SET RETREAT</b></a>
+  <a class="brand" href="#accueil"><svg viewBox="0 0 300 250"><use href="#logo" width="300" height="250"/></svg><b><span class="b3">3 </span>SET RETREAT</b></a>
   <nav class="nav" id="nav" aria-label="Menu"></nav>
   <div class="ctl">
     <p><span lang="fr">Vous êtes</span><span lang="de">Sie sind</span></p>
@@ -442,6 +448,7 @@ button{font:inherit;color:inherit}
   </div>
   <div class="sidefoot">
     <button class="btn ghost" data-pres type="button"></button>
+    <button class="btn ghost" data-anim type="button"></button>
     <p class="int"><span lang="fr">Le mode présentation masque la partie interne. Flèches ← → pour avancer.</span><span lang="de">Der Präsentationsmodus blendet den internen Teil aus. Pfeiltasten ← → zum Blättern.</span></p>
   </div>
 </aside>
@@ -749,18 +756,18 @@ button{font:inherit;color:inherit}
 <section class="view int" data-v="marque">
   <div class="band"><div class="wrap">
     <div class="vhead"><div><h2><span lang="fr">Couleurs et logo</span><span lang="de">Farben und Logo</span></h2><p class="lede"><span lang="fr">Choisis une palette ou un logo&nbsp;: toute l'app change tout de suite, seulement sur cet appareil. Pour décider ensemble, chacun note les options dans la grille.</span><span lang="de">Wähle eine Palette oder ein Logo: Die ganze App ändert sich sofort, nur auf diesem Gerät. Zum gemeinsamen Entscheiden bewertet jede Person die Optionen im Raster.</span></p></div></div>
-    <div class="bnow"><p id="bNow"></p><button class="btn ghost" type="button" data-breset><span lang="fr">Revenir à l'actuel</span><span lang="de">Zurück zum aktuellen Stand</span></button><a class="btn" href="https://claude.ai/artifact/5zCfLjesdcf5cxKEggj5v9" target="_blank" rel="noopener"><span lang="fr">Grille de décision</span><span lang="de">Entscheidungsraster</span><svg class="ic"><use href="#i-out"/></svg></a></div>
-    <h3 class="sub"><span lang="fr">Trois versions complètes</span><span lang="de">Drei komplette Versionen</span></h3>
+    <div class="bnow"><p id="bNow"></p><button class="btn ghost" type="button" data-breset><span lang="fr">Revenir à la version principale</span><span lang="de">Zurück zur Hauptversion</span></button><button class="btn ghost" type="button" data-anim></button><a class="btn" href="https://claude.ai/artifact/5zCfLjesdcf5cxKEggj5v9" target="_blank" rel="noopener"><span lang="fr">Grille de décision</span><span lang="de">Entscheidungsraster</span><svg class="ic"><use href="#i-out"/></svg></a></div>
+    <h3 class="sub"><span lang="fr">Quatre versions complètes</span><span lang="de">Vier komplette Versionen</span></h3>
     <div class="vers" id="vers"></div>
     <p class="hint"><span lang="fr">Une version change tout d'un coup&nbsp;: couleurs, typo, logo, formes et image d'accueil. Ensuite, chaque élément peut encore être changé séparément ci-dessous.</span><span lang="de">Eine Version ändert alles auf einmal: Farben, Schrift, Logo, Formen und Startbild. Danach lässt sich jedes Element unten noch einzeln wechseln.</span></p>
-    <h3 class="sub"><span lang="fr">Six palettes</span><span lang="de">Sechs Paletten</span></h3>
+    <h3 class="sub"><span lang="fr">Huit palettes</span><span lang="de">Acht Paletten</span></h3>
     <div class="pals" id="pals"></div>
     <p class="hint"><span lang="fr">Contraste selon WCAG 2.2&nbsp;: 4,5:1 pour le texte normal, 3:1 pour les grands titres et les éléments graphiques, le logo n'est pas concerné. Sur fond clair, le texte en couleur d'accent prend une variante plus foncée.</span><span lang="de">Kontrast nach WCAG 2.2: 4,5:1 für normalen Text, 3:1 für grosse Titel und grafische Elemente, das Logo ist ausgenommen. Auf hellem Grund nimmt Text in der Akzentfarbe eine dunklere Variante.</span></p>
     <h3 class="sub"><span lang="fr">Trois typographies</span><span lang="de">Drei Schriftpaare</span></h3>
     <div class="fonts" id="fonts"></div>
-    <h3 class="sub"><span lang="fr">Sept logos</span><span lang="de">Sieben Logos</span></h3>
+    <h3 class="sub"><span lang="fr">Treize logos</span><span lang="de">Dreizehn Logos</span></h3>
     <div class="logos" id="logos"></div>
-    <p class="hint"><span lang="fr">Les six nouveaux logos sont des esquisses. Avant de choisir&nbsp;: recherche de marque (Swissreg, puis professionnelle) et finition dans un outil vectoriel.</span><span lang="de">Die sechs neuen Logos sind Skizzen. Vor dem Entscheid: Markenrecherche (Swissreg, danach professionell) und Feinschliff in einem Vektorprogramm.</span></p>
+    <p class="hint"><span lang="fr">Tous les logos sont encore des esquisses&nbsp;; le premier est la nouvelle version principale. Avant le choix final&nbsp;: recherche de marque (Swissreg, puis professionnelle) et finition dans un outil vectoriel.</span><span lang="de">Alle Logos sind noch Skizzen; das erste ist die neue Hauptversion. Vor dem endgültigen Entscheid: Markenrecherche (Swissreg, danach professionell) und Feinschliff in einem Vektorprogramm.</span></p>
   </div></div>
 </section>
 </main>
@@ -775,12 +782,13 @@ button{font:inherit;color:inherit}
 </nav>
 
 <div class="sheet" id="sheet" hidden>
-  <div class="sheet-h"><a class="brand" href="#accueil"><svg viewBox="0 0 300 250"><use href="#logo" width="300" height="250"/></svg><b>3 SET RETREAT</b></a><button class="iconbtn" id="closeBtn" type="button" aria-label="×"><svg class="ic"><use href="#i-x"/></svg></button></div>
+  <div class="sheet-h"><a class="brand" href="#accueil"><svg viewBox="0 0 300 250"><use href="#logo" width="300" height="250"/></svg><b><span class="b3">3 </span>SET RETREAT</b></a><button class="iconbtn" id="closeBtn" type="button" aria-label="×"><svg class="ic"><use href="#i-x"/></svg></button></div>
   <nav class="nav" id="nav2" aria-label="Menu"></nav>
   <div class="ctl" style="margin-top:12px">
     <p><span lang="fr">Vous êtes</span><span lang="de">Sie sind</span></p>
     <div class="seg" data-pseg></div>
     <button class="btn ghost" data-pres type="button" style="margin-top:8px"></button>
+    <button class="btn ghost" data-anim type="button" style="margin-top:8px"></button>
   </div>
 </div>
 
@@ -897,7 +905,11 @@ const PAL=[
  {id:'club',name:'Club',t:'#D7261E',c:{ink:['#16181B','Graphite','Graphit'],acc:['#D7261E','Rouge signal','Signalrot'],sup:['#7E8C9A','Gris béton','Betongrau'],paper:['#F4F4F1','Blanc','Weiss']},
   pro:['Très sportive et très suisse, se lit de loin.','Sehr sportlich und sehr schweizerisch, auf Distanz gut lesbar.'],con:['Rouge et blanc&nbsp;: éviter tout ce qui ressemble à un drapeau ou à une marque nationale.','Rot und Weiss: alles vermeiden, was nach Fahne oder Landesmarke aussieht.']},
  {id:'thermes',name:'Thermes',t:'#936329',c:{ink:['#3B2A20','Café','Kaffee'],acc:['#C98A3D','Ocre','Ocker'],sup:['#8FC3CC','Bleu bain','Badblau'],paper:['#F7F1E7','Crème','Creme']},
-  pro:['Chaleureuse et haut de gamme, très «&nbsp;retreat&nbsp;».','Warm und hochwertig, sehr «Retreat».'],con:['Moins sportive, le padel passe au second plan.','Weniger sportlich, Padel rückt in den Hintergrund.']}
+  pro:['Chaleureuse et haut de gamme, très «&nbsp;retreat&nbsp;».','Warm und hochwertig, sehr «Retreat».'],con:['Moins sportive, le padel passe au second plan.','Weniger sportlich, Padel rückt in den Hintergrund.']},
+ {id:'encre',name:'Encre',t:'#9B5C3D',c:{ink:['#171513','Encre','Tinte'],acc:['#C9774F','Argile','Ton'],sup:['#9AB3B9','Brume','Nebel'],paper:['#F2EDE4','Ivoire','Elfenbein']},
+  pro:['Luxe et calme, comme un spa haut de gamme. L’argile garde de la chaleur.','Luxuriös und ruhig wie ein hochwertiges Spa. Der Tonton bringt Wärme.'],con:['Moins sportive au premier regard.','Auf den ersten Blick weniger sportlich.']},
+ {id:'carbone',name:'Carbone',t:'#4963CC',c:{ink:['#0E0F11','Carbone','Karbon'],acc:['#5B7CFF','Bleu court','Courtblau'],sup:['#A8A196','Pierre','Stein'],paper:['#EEEDE8','Craie','Kreide']},
+  pro:['Sport premium&nbsp;: noir profond et un seul accent bleu, très net.','Premium-Sport: tiefes Schwarz und ein einziger blauer Akzent, sehr klar.'],con:['Plus froide, le côté récupération ressort moins.','Kühler, die Erholung kommt weniger zur Geltung.']}
 ];
 const FONTS=[
  {id:'match',cur:1,n:'Match',d:"'Oswald','Arial Narrow',sans-serif",t:"'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif",fn:'Oswald + DM Sans',x:['Condensée et sportive, comme un tableau de score.','Schmal und sportlich, wie eine Anzeigetafel.']},
@@ -907,7 +919,19 @@ const FONTS=[
 const LM='var(--lr,var(--paper))',LA='var(--acc)',LS='var(--sup)',LC='var(--cut,var(--lr,var(--paper)))';
 function arcD(r,a1,a2){const p=a=>{const t=a*Math.PI/180;return (150+r*Math.cos(t)).toFixed(1)+' '+(125+r*Math.sin(t)).toFixed(1)};return 'M'+p(a1)+' A'+r+' '+r+' 0 '+((a2-a1)>180?1:0)+' 1 '+p(a2)}
 const LOGOS=[
- {id:'lignes',cur:1,n:['Trois lignes','Drei Linien'],d:['Crête, trajectoire de balle et onde&nbsp;: les trois piliers dessinés comme un paysage.','Bergkamm, Ballflugbahn und Welle: die drei Pfeiler als Landschaft gezeichnet.'],
+ {id:'vivant',cur:1,n:['Le 3 vivant','Die lebendige 3'],d:['Un joueur qui devient un 3&nbsp;: la tête reste en haut, l’élan forme le haut du 3, le corps le bas. Seul le logo bouge, le reste du site utilise les pièces.','Ein Spieler, der zur 3 wird: Der Kopf bleibt oben, der Schwung bildet den oberen Bogen, der Körper den unteren. Nur das Logo bewegt sich, der Rest der Seite arbeitet mit den Einzelteilen.'],
+  svg:'<g transform="translate(110.4,72.7) scale(0.198)"><path class="vv-b" d="M176,342 C180,342 193,342 201,342 C209,342 218,343 226,344 C234,344 243,345 251,347 C259,348 268,350 276,352 C284,354 292,356 300,359 C308,361 316,364 323,368 C331,371 338,375 346,379 C353,383 360,387 367,392 C374,397 380,402 386,408 C393,414 398,420 404,426 C409,432 414,439 419,446 C423,453 427,461 431,468 C434,476 438,484 440,491 C443,499 445,508 447,516 C448,524 450,532 450,540 C451,549 452,557 452,566 C452,574 452,582 451,591 C451,599 450,607 449,616 C448,624 446,632 444,640 C443,648 440,657 438,664 C435,672 432,680 428,688 C425,695 421,703 417,710 C412,717 408,724 402,731 C397,737 392,743 386,749 C380,755 373,761 367,766 C360,771 353,775 346,780 C338,784 331,787 323,791 C315,794 307,796 299,799 C291,801 283,803 275,804 C267,805 258,806 250,806 C242,806 233,806 225,805 C216,805 208,804 200,802 C192,801 183,799 175,797 C167,794 159,791 152,788 C144,785 137,781 130,777 C122,772 115,767 109,762 C103,757 96,751 91,745 C85,739 80,732 75,726 C70,719 64,708 62,704" fill="none" style="stroke:'+LM+'" stroke-width="104" stroke-linecap="round" stroke-linejoin="round"/><path class="vv-l" d="M452,570 C452,573 452,582 452,589 C451,595 451,601 450,607 C449,613 448,619 447,625 C446,632 445,638 444,644 C442,650 441,656 439,662 C437,667 435,673 432,679 C430,685 427,690 425,696 C422,701 419,707 415,712 C412,717 409,722 405,727 C401,732 397,737 393,742 C389,746 384,751 380,755 C375,759 371,763 366,767 C361,770 355,774 350,777 C345,780 339,783 334,786 C328,788 323,791 317,793 C311,795 305,797 299,799 C293,800 287,802 281,803 C275,804 269,805 263,805 C256,806 247,806 244,806" fill="none" style="stroke:'+LM+'" stroke-width="104" stroke-linecap="round"/><path class="vv-s" d="M108,133 L114,114 L123,97 L134,81 L146,67 L161,55 L176,45 L193,38 L211,33 L229,30 L248,29 L266,31 L284,34 L301,40 L317,47 L332,57 L345,68 L355,80 L364,94 L371,109 L376,124 L378,140 L379,157 L378,173 L375,188 L370,202 L364,214 L355,225 L346,236 L334,245 L321,253 L307,260 L292,266 L277,272 L260,277 L243,280 L226,284 L208,286 L190,288 L171,290 L181,394 L202,392 L224,388 L246,384 L267,379 L289,372 L311,364 L332,354 L353,343 L373,329 L393,313 L410,294 L425,273 L437,249 L445,225 L449,199 L450,175 L447,150 L442,127 L434,104 L423,83 L410,63 L393,45 L375,30 L355,18 L334,9 L312,3 L290,-1 L268,-2 L247,-1 L225,2 L204,8 L184,16 L165,27 L148,40 L133,54 L120,71 L108,89 L99,108 L92,127 Z" style="fill:'+LA+'"/><circle class="vv-e" cx="176" cy="342" r="52" style="fill:'+LA+'"/><circle class="vv-a" cx="100" cy="130" r="8" style="fill:'+LA+'"/><circle cx="250" cy="-136" r="82" style="fill:'+LS+'"/></g>'},
+ {id:'geste',n:['Le Geste','Le Geste'],d:['Un joueur en pleine frappe&nbsp;: la tête, le corps et l’élan de la raquette, un élément par pilier.','Ein Spieler mitten im Schlag: Kopf, Körper und Schwung des Schlägers, ein Element pro Pfeiler.'],
+  svg:'<g transform="translate(30,5) scale(2.4)"><path d="M14.2,68 L12.5,64.4 L11.2,60.7 L10.2,56.8 L9.6,52.9 L9.4,48.9 L9.6,44.9 L10.2,40.9 L11.2,37 L12.6,33.1 L14.3,29.5 L16.5,26 L19,22.7 L21.8,19.7 L24.9,16.9 L28.4,14.5 L32.1,12.5 L36,10.8 L40,9.5 L44.3,8.7 L48.5,8.3 L52.9,8.4 L57.2,8.9 L61.5,9.9 L65.6,11.3 L69.6,13.2 L73.4,15.5 L76.9,18.3 L80.1,21.3 L83,24.8 L85.5,28.5 L87.5,32.5 L89.1,36.6 L79.1,39.9 L77.9,36.7 L76.4,33.7 L74.7,30.8 L72.6,28.1 L70.3,25.5 L67.7,23.3 L64.9,21.2 L61.9,19.5 L58.7,18 L55.4,16.9 L52,16.1 L48.4,15.7 L44.9,15.6 L41.3,15.9 L37.7,16.5 L34.2,17.6 L30.8,19 L27.6,20.7 L24.5,22.8 L21.7,25.2 L19.1,28 L16.8,31 L14.8,34.2 L13.2,37.7 L11.9,41.3 L11.1,45.1 L10.6,48.9 L10.6,52.8 L11,56.6 L11.8,60.5 L13.1,64.2 L14.7,67.7 Z" style="fill:'+LA+'"/><circle cx="62.5" cy="24.5" r="10.2" style="fill:var(--halo,var(--ink))"/><path d="M54.1,34.3 L53.5,35.7 L52.9,37.2 L52.3,38.6 L51.7,40 L51.1,41.3 L50.4,42.6 L49.8,43.9 L49.2,45.2 L48.7,46.5 L48.1,47.8 L47.5,49 L46.9,50.3 L46.4,51.5 L45.8,52.7 L45.3,54 L44.8,55.2 L44.3,56.4 L43.8,60.4 L46.3,62.9 L47.8,64 L49.3,65.2 L50.7,66.5 L52.2,67.7 L53.6,69.1 L55,70.5 L56.4,71.9 L57.7,73.4 L59.1,75 L60.4,76.6 L61.6,78.3 L62.9,80 L64.1,81.9 L65.3,83.8 L66.4,85.8 L67.4,87.9 L68.5,90.1 L73.5,87.9 L72.5,85.5 L71.4,83.2 L70.3,81 L69.1,78.9 L67.9,76.8 L66.6,74.8 L65.3,72.9 L63.9,71.1 L62.5,69.4 L61.1,67.7 L59.7,66 L58.2,64.5 L56.7,63 L55.2,61.5 L53.7,60.1 L52.2,58.8 L50.7,57.5 L50.2,57.6 L50.7,59.3 L51.3,58.2 L51.9,57 L52.4,55.9 L53,54.7 L53.7,53.6 L54.3,52.4 L54.9,51.2 L55.6,50 L56.3,48.7 L56.9,47.5 L57.6,46.2 L58.3,44.9 L59,43.5 L59.7,42.1 L60.4,40.7 L61.2,39.2 L61.9,37.7 Z M44.2,56.9 L43.7,57.6 L43.2,58.3 L42.8,59 L42.3,59.7 L41.8,60.4 L41.3,61.1 L40.8,61.8 L40.2,62.5 L39.7,63.2 L39.2,63.9 L38.7,64.6 L38.1,65.3 L37.6,66.1 L37.1,66.8 L36.5,67.5 L36,68.2 L35.4,69 L34.8,69.7 L34.2,70.4 L33.7,71.2 L33.1,71.9 L32.5,72.7 L31.9,73.4 L31.2,74.2 L30.6,74.9 L30,75.7 L29.3,76.4 L28.7,77.2 L28,77.9 L27.4,78.7 L26.7,79.4 L26,80.2 L25.3,81 L24.7,81.7 L23.9,82.5 L23.2,83.2 L26.8,86.8 L27.5,86 L28.3,85.3 L29.1,84.5 L29.8,83.8 L30.6,83.1 L31.3,82.3 L32,81.6 L32.7,80.8 L33.4,80.1 L34.1,79.4 L34.8,78.6 L35.5,77.9 L36.2,77.2 L36.8,76.4 L37.5,75.7 L38.2,75 L38.8,74.3 L39.4,73.5 L40.1,72.8 L40.7,72.1 L41.3,71.4 L41.9,70.7 L42.5,70 L43.1,69.3 L43.7,68.6 L44.3,67.9 L44.9,67.2 L45.4,66.5 L46,65.8 L46.6,65.1 L47.1,64.4 L47.7,63.8 L48.2,63.1 L48.7,62.4 L49.3,61.8 L49.8,61.1 Z" style="fill:'+LM+'"/><circle cx="62.5" cy="24.5" r="7.6" style="fill:'+LS+'"/></g>'},
+ {id:'geste3',n:['Le Geste en 3','Le Geste als 3'],d:['Le smash dessine le chiffre 3&nbsp;: l’élan en haut, le corps en bas, la tête au milieu.','Der Smash zeichnet die Ziffer 3: oben der Schwung, unten der Körper, der Kopf in der Mitte.'],
+  svg:'<g transform="translate(19.6,-5.4) scale(2.6087)"><path d="M31.9,15.7 L33.3,13.7 L35,11.8 L36.8,10.1 L38.8,8.7 L40.9,7.4 L43.2,6.3 L45.6,5.5 L48.1,5 L50.6,4.8 L53.2,4.8 L55.8,5.1 L58.4,5.7 L60.9,6.6 L63.3,7.8 L65.6,9.3 L67.7,11.1 L69.6,13.1 L71.2,15.3 L72.7,17.8 L73.8,20.4 L74.6,23.2 L75.1,26 L75.2,28.9 L75,31.9 L74.4,34.8 L73.5,37.6 L72.3,40.3 L70.7,42.9 L68.8,45.2 L66.6,47.3 L64.1,49.1 L61.5,50.6 L56.9,41.2 L58.5,40.3 L60,39.2 L61.4,38.1 L62.7,36.7 L63.8,35.2 L64.8,33.7 L65.6,32 L66.2,30.2 L66.7,28.3 L66.9,26.3 L66.9,24.4 L66.7,22.4 L66.2,20.4 L65.6,18.5 L64.7,16.6 L63.5,14.8 L62.2,13.2 L60.7,11.6 L58.9,10.3 L57,9.2 L55,8.3 L52.8,7.7 L50.6,7.3 L48.3,7.1 L46,7.3 L43.7,7.8 L41.4,8.5 L39.3,9.5 L37.3,10.8 L35.5,12.3 L33.8,14.1 L32.4,16 Z" style="fill:'+LA+'"/><path d="M45.5,61.5 L49.3,61.8 L52.7,62.4 L55.9,63.2 L58.9,64.3 L61.6,65.6 L63.9,67.1 L66,68.7 L67.6,70.4 L68.8,72.1 L69.7,73.9 L70.2,75.7 L70.3,77.7 L70,79.6 L69.3,81.3 L68.4,82.9 L67.1,84.3 L65.4,85.7 L63.5,86.8 L61.2,87.8 L58.6,88.5 L55.8,89 L52.8,89.3 L49.7,89.3 L46.4,89 L44.5,88.8 L42.7,88.5 L40.9,88.1 L39.2,87.7 L37.4,87.1 L35.7,86.5 L34,85.7 L32.3,84.9 L30.6,83.9 L28.9,82.8 L27.2,81.6 L25.4,80.3 L22.6,83.7 L24.3,85.3 L26.1,86.7 L27.9,88 L29.8,89.2 L31.7,90.3 L33.6,91.3 L35.5,92.1 L37.4,92.9 L39.4,93.6 L41.5,94.1 L43.5,94.6 L45.6,95 L49.3,95.4 L52.9,95.5 L56.5,95.4 L59.9,94.9 L63.2,94.1 L66.3,92.9 L69.2,91.4 L71.7,89.6 L74,87.3 L75.8,84.7 L77,81.7 L77.7,78.3 L77.8,74.9 L77.1,71.5 L75.7,68.3 L73.9,65.4 L71.5,62.8 L68.8,60.4 L65.7,58.3 L62.3,56.6 L58.6,55.1 L54.7,53.9 L50.6,53 L46.5,52.5 Z" style="fill:'+LM+'"/><circle cx="37" cy="48" r="7.4" style="fill:'+LS+'"/></g>'},
+ {id:'fil',n:['Le Fil','Le Fil'],d:['Un seul fil sans début ni fin forme trois boucles&nbsp;: le jeu, le corps et l’esprit sont liés.','Ein einziger Faden ohne Anfang und Ende bildet drei Schlaufen: Spiel, Körper und Geist gehören zusammen.'],
+  svg:'<g transform="translate(30,5) scale(2.4)"><path d="M50,6.1 C54.2,6.1 58.5,7 62.3,8.7 C66.1,10.5 69.6,13 72.3,16.1 C75,19.2 77,22.7 78.3,26.4 C79.6,30 80.1,33.8 80.1,37.3 C80,40.9 79.4,44.2 78.4,47.1 C77.5,50 76.2,52.5 74.9,54.7 C73.6,56.9 72.3,58.7 71.2,60.4 C70,62 69,63.6 68.1,65.1 C67.1,66.7 66.3,68.3 65.5,70.2 C64.6,72 63.7,74.1 62.5,76.3 C61.2,78.5 59.7,80.8 57.6,83.1 C55.6,85.4 53,87.6 50,89.4 C47,91.3 43.4,92.7 39.6,93.4 C35.8,94.1 31.7,94.1 27.7,93.3 C23.7,92.5 19.8,90.8 16.4,88.4 C12.9,85.9 10,82.7 7.9,79 C5.8,75.3 4.4,71.2 4,67 C3.6,62.8 4.1,58.6 5.4,54.7 C6.7,50.8 8.8,47.3 11.3,44.3 C13.8,41.4 16.8,39 19.9,37.3 C23,35.6 26.2,34.5 29.2,33.9 C32.2,33.3 35,33.1 37.5,33.1 C40.1,33.2 42.3,33.4 44.3,33.5 C46.4,33.7 48.2,33.9 50,33.9 C51.8,33.9 53.6,33.7 55.7,33.5 C57.7,33.4 59.9,33.2 62.5,33.1 C65,33.1 67.8,33.3 70.8,33.9 C73.8,34.5 77,35.6 80.1,37.3 C83.2,39 86.2,41.4 88.7,44.3 C91.2,47.3 93.3,50.8 94.6,54.7 C95.9,58.6 96.4,62.8 96,67 C95.6,71.2 94.2,75.3 92.1,79 C90,82.7 87.1,85.9 83.6,88.4 C80.2,90.8 76.3,92.5 72.3,93.3 C68.3,94.1 64.2,94.1 60.4,93.4 C56.6,92.7 53,91.3 50,89.4 C47,87.6 44.4,85.4 42.4,83.1 C40.3,80.8 38.8,78.5 37.5,76.3 C36.3,74.1 35.4,72 34.5,70.2 C33.7,68.3 32.9,66.7 31.9,65.1 C31,63.6 30,62 28.8,60.4 C27.7,58.7 26.4,56.9 25.1,54.7 C23.8,52.5 22.5,50 21.6,47.1 C20.6,44.2 20,40.9 19.9,37.3 C19.9,33.8 20.4,30 21.7,26.4 C23,22.7 25,19.2 27.7,16.1 C30.4,13 33.9,10.5 37.7,8.7 C41.5,7 45.8,6.1 50,6.1 Z" fill="none" style="stroke:'+LM+'" stroke-width="4.8"/><path d="M50,33.9 C51.8,33.9 53.6,33.7 55.7,33.5 C57.7,33.4 59.9,33.2 62.5,33.1 C65,33.1 67.8,33.3 70.8,33.9 C73.8,34.5 77,35.6 80.1,37.3 C83.2,39 86.2,41.4 88.7,44.3 C91.2,47.3 93.3,50.8 94.6,54.7 C95.9,58.6 96.4,62.8 96,67 C95.6,71.2 94.2,75.3 92.1,79 C90,82.7 87.1,85.9 83.6,88.4 C80.2,90.8 76.3,92.5 72.3,93.3 C68.3,94.1 64.2,94.1 60.4,93.4 C56.6,92.7 53,91.3 50,89.4 C47,87.6 44.4,85.4 42.4,83.1 C40.3,80.8 38.8,78.5 37.5,76.3 C36.3,74.1 35.4,72 34.5,70.2 C33.7,68.3 32.9,66.7 31.9,65.1" fill="none" style="stroke:'+LA+'" stroke-width="4.8"/><path d="M68.1,65.1 C67.1,66.7 66.3,68.3 65.5,70.2 C64.6,72 63.7,74.1 62.5,76.3 C61.2,78.5 59.7,80.8 57.6,83.1 C55.6,85.4 53,87.6 50,89.4 C47,91.3 43.4,92.7 39.6,93.4 C35.8,94.1 31.7,94.1 27.7,93.3 C23.7,92.5 19.8,90.8 16.4,88.4 C12.9,85.9 10,82.7 7.9,79 C5.8,75.3 4.4,71.2 4,67 C3.6,62.8 4.1,58.6 5.4,54.7 C6.7,50.8 8.8,47.3 11.3,44.3 C13.8,41.4 16.8,39 19.9,37.3 C23,35.6 26.2,34.5 29.2,33.9 C32.2,33.3 35,33.1 37.5,33.1 C40.1,33.2 42.3,33.4 44.3,33.5 C46.4,33.7 48.2,33.9 50,33.9" fill="none" style="stroke:'+LM+'" stroke-width="4.8"/><path d="M31.9,65.1 C31,63.6 30,62 28.8,60.4 C27.7,58.7 26.4,56.9 25.1,54.7 C23.8,52.5 22.5,50 21.6,47.1 C20.6,44.2 20,40.9 19.9,37.3 C19.9,33.8 20.4,30 21.7,26.4 C23,22.7 25,19.2 27.7,16.1 C30.4,13 33.9,10.5 37.7,8.7 C41.5,7 45.8,6.1 50,6.1 C54.2,6.1 58.5,7 62.3,8.7 C66.1,10.5 69.6,13 72.3,16.1 C75,19.2 77,22.7 78.3,26.4 C79.6,30 80.1,33.8 80.1,37.3 C80,40.9 79.4,44.2 78.4,47.1 C77.5,50 76.2,52.5 74.9,54.7 C73.6,56.9 72.3,58.7 71.2,60.4 C70,62 69,63.6 68.1,65.1" fill="none" style="stroke:'+LS+'" stroke-width="4.8"/><path d="M77.7,24.8 C79.4,28.9 80.2,33.3 80.1,37.3 C80,41.4 79.2,45.1 78,48.3" fill="none" style="stroke:var(--halo,var(--ink))" stroke-width="11.6"/><path d="M77.7,24.8 C79.4,28.9 80.2,33.3 80.1,37.3 C80,41.4 79.2,45.1 78,48.3" fill="none" style="stroke:'+LS+'" stroke-width="4.8"/><path d="M62.1,93.7 C57.6,93.1 53.5,91.5 50,89.4 C46.5,87.4 43.7,84.8 41.5,82.1" fill="none" style="stroke:var(--halo,var(--ink))" stroke-width="11.6"/><path d="M62.1,93.7 C57.6,93.1 53.5,91.5 50,89.4 C46.5,87.4 43.7,84.8 41.5,82.1" fill="none" style="stroke:'+LA+'" stroke-width="4.8"/><path d="M10.2,45.7 C13,42.1 16.4,39.3 19.9,37.3 C23.5,35.4 27.1,34.2 30.5,33.7" fill="none" style="stroke:var(--halo,var(--ink))" stroke-width="11.6"/><path d="M10.2,45.7 C13,42.1 16.4,39.3 19.9,37.3 C23.5,35.4 27.1,34.2 30.5,33.7" fill="none" style="stroke:'+LM+'" stroke-width="4.8"/></g>'},
+ {id:'constance',n:['Constance','Constance'],d:['Trois arcs forment une figure de largeur constante, avec un point au centre pour les participants.','Drei Bögen bilden eine Form gleicher Breite, mit einem Punkt in der Mitte für die Teilnehmenden.'],
+  svg:'<g transform="translate(30,5) scale(2.4)"><path d="M7,81.5 A86,86 0 0 1 50,7 A129,129 0 0 0 7,81.5 Z" style="fill:'+LA+'"/><path d="M93,81.5 A86,86 0 0 1 7,81.5 A129,129 0 0 0 93,81.5 Z" style="fill:'+LM+'"/><path d="M50,7 A86,86 0 0 1 93,81.5 A129,129 0 0 0 50,7 Z" style="fill:'+LS+'"/><circle cx="50" cy="56.7" r="4.2" style="fill:'+LM+'"/></g>'},
+ {id:'point',n:['Le Point','Le Point'],d:['Un carré pour le corps, un cercle pour l’esprit. Là où ils se croisent naît le jeu.','Ein Quadrat für den Körper, ein Kreis für den Geist. Wo sie sich überschneiden, entsteht das Spiel.'],
+  svg:'<g transform="translate(30,5) scale(1.5) translate(5,5)"><path d="M100,50 H50 A50,50 0 0 0 100,100 Z" style="fill:'+LA+'"/><path d="M0,50 H100 V150 H0 Z" fill="none" style="stroke:'+LM+'" stroke-width="6"/><circle cx="100" cy="50" r="50" fill="none" style="stroke:'+LS+'" stroke-width="6"/></g>'},
+ {id:'lignes',n:['Trois lignes','Drei Linien'],d:['Crête, trajectoire de balle et onde&nbsp;: les trois piliers dessinés comme un paysage.','Bergkamm, Ballflugbahn und Welle: die drei Pfeiler als Landschaft gezeichnet.'],
   svg:'<polyline points="16,206 98,78 144,132 196,46 284,206" fill="none" style="stroke:'+LM+'" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 186 Q140 -20 236 110" fill="none" style="stroke:'+LA+'" stroke-width="7" stroke-dasharray="14 12" stroke-linecap="round"/><circle cx="236" cy="110" r="14" style="fill:'+LA+'"/><path d="M16 234 C46 216 76 252 106 234 S166 216 196 234 S256 252 284 234" fill="none" style="stroke:'+LS+'" stroke-width="7" stroke-linecap="round"/>'},
  {id:'piliers',n:['Trois piliers','Drei Pfeiler'],d:['Trois traits comme un «&nbsp;III&nbsp;»&nbsp;: droit pour la force, en courbe pour le padel, en vague pour la récupération.','Drei Striche wie ein «III»: gerade für Kraft, im Bogen für Padel, als Welle für Erholung.'],
   svg:'<path d="M96 44V206" fill="none" style="stroke:'+LM+'" stroke-width="26" stroke-linecap="round"/><path d="M150 206C129 160 129 90 150 44" fill="none" style="stroke:'+LA+'" stroke-width="26" stroke-linecap="round"/><path d="M206 206C226 193 226 179 206 166S186 139 206 125S226 98 206 85S186 57 206 44" fill="none" style="stroke:'+LS+'" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>'},
@@ -923,7 +947,8 @@ const LOGOS=[
   svg:'<circle cx="150" cy="125" r="100" style="fill:'+LA+'"/><path d="M54 150L105 100L130 128L170 78L246 150A100 100 0 0 1 54 150Z" style="fill:'+LS+'"/><polyline points="54,150 105,100 130,128 170,78 246,150" fill="none" style="stroke:'+LC+'" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M82 178C94 170 106 186 118 178S142 170 154 178S178 186 190 178S206 172 218 178M104 202C114 195 124 209 134 202S154 195 164 202S184 209 194 202" fill="none" style="stroke:'+LC+'" stroke-width="7" stroke-linecap="round"/>'}
 ];
 const VERS=[
- {id:'actuelle',main:1,n:['Alpin sportif','Alpin sportlich'],pal:'thermal',logo:'lignes',font:'match',f:['Coins arrondis, panorama alpin','Runde Ecken, Alpenpanorama'],d:['La version actuelle&nbsp;: montagne, bains thermaux et énergie du padel.','Die heutige Version: Berge, Thermalbad und Padel-Energie.']},
+ {id:'vivant',main:1,n:['Le 3 vivant','Die lebendige 3'],pal:'thermal',logo:'vivant',font:'match',f:['Coins arrondis, le joueur et ses trois pièces','Runde Ecken, der Spieler und seine drei Teile'],d:['La nouvelle version principale&nbsp;: un logo animé qui passe du joueur au 3, sans paysage, utilisable partout.','Die neue Hauptversion: ein bewegtes Logo, das vom Spieler zur 3 wechselt, ohne Landschaft, überall einsetzbar.']},
+ {id:'actuelle',n:['Alpin sportif','Alpin sportlich'],pal:'thermal',logo:'lignes',font:'match',f:['Coins arrondis, panorama alpin','Runde Ecken, Alpenpanorama'],d:['L’ancienne version principale&nbsp;: montagne, bains thermaux et énergie du padel.','Die bisherige Hauptversion: Berge, Thermalbad und Padel-Energie.']},
  {id:'club',n:['Club','Club'],pal:'club',logo:'set3',font:'club',f:['Angles nets, grand chiffre, lignes du court','Klare Kanten, grosse Ziffer, Court-Linien'],d:['Précision du sport suisse&nbsp;: graphite, blanc et rouge signal. Direct et sportif.','Schweizer Sportpräzision: Graphit, Weiss und Signalrot. Direkt und sportlich.']},
  {id:'thermes',n:['Thermes','Thermes'],pal:'thermes',logo:'arcs',font:'thermes',f:['Formes douces, arches, eau','Weiche Formen, Bögen, Wasser'],d:['Retreat chaleureux, comme un magazine d’hôtel&nbsp;: café, ocre et bleu des bains.','Warmes Retreat wie ein Hotelmagazin: Kaffee, Ocker und Badblau.']}
 ];
@@ -939,7 +964,7 @@ function injectLogos(){$('svg.defs defs').insertAdjacentHTML('beforeend',LOGOS.m
 function applyPal(id){const p=byId(PAL,id);st.pal=p.id;const r=root.style;
  r.setProperty('--ink',p.c.ink[0]);r.setProperty('--acc',p.c.acc[0]);r.setProperty('--sup',p.c.sup[0]);r.setProperty('--paper',p.c.paper[0]);r.setProperty('--onacc',onAccB(p));r.setProperty('--acc-t',p.t);
  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=p.c.ink[0];save();markBrand()}
-function applyLogo(id){const L=byId(LOGOS,id);st.logo=L.id;$('#logo').innerHTML=L.svg;save();markBrand()}
+function applyLogo(id){const L=byId(LOGOS,id);st.logo=L.id;root.dataset.logo=L.id;$('#logo').innerHTML=L.svg;if(L.id==='vivant'&&!vvOn)vvDraw(1);save();markBrand()}
 function applyFont(id){const f=byId(FONTS,id);st.font=f.id;root.style.setProperty('--fd',f.d);root.style.setProperty('--ft',f.t);save();markBrand()}
 function applyVersion(id){const v=byId(VERS,id);st.ver=v.id;root.dataset.ver=v.id;applyPal(v.pal);applyLogo(v.logo);applyFont(v.font);scene();markBrand()}
 function markBrand(){
@@ -960,7 +985,7 @@ function renderBrand(){
  const box=$('#vers');if(!box)return;
  const tag=t=>'<span class="tag2">'+biB(t)+'</span>';
  box.innerHTML=VERS.map(v=>{const p=byId(PAL,v.pal),L=byId(LOGOS,v.logo),f=byId(FONTS,v.font);
-  return '<article class="vr" data-vc="'+v.id+'"><div class="vr-p" style="'+palVars(p)+';--vf:'+f.d+';--vt:'+f.t+'"><div class="lk">'+useB('lg-'+L.id)+'<b class="wmk">3 SET RETREAT</b></div><p class="tg">'+biB(['Trois jours. Trois sets. Un nouveau jeu.','Drei Tage. Drei Sätze. Ein neues Spiel.'])+'</p><span class="cta">'+biB(['S’inscrire','Anmelden'])+'</span></div>'
+  return '<article class="vr" data-vc="'+v.id+'"><div class="vr-p" style="'+palVars(p)+';--vf:'+f.d+';--vt:'+f.t+'"><div class="lk">'+useB('lg-'+L.id)+'<b class="wmk">'+(L.id==='vivant'?'':'3 ')+'SET RETREAT</b></div><p class="tg">'+biB(['Trois jours. Trois sets. Un nouveau jeu.','Drei Tage. Drei Sätze. Ein neues Spiel.'])+'</p><span class="cta">'+biB(['S’inscrire','Anmelden'])+'</span></div>'
   +'<div class="vr-b"><div class="pal-h"><h3>'+biB(v.n)+'</h3>'+(v.main?tag(['version principale','Hauptversion']):'')+'</div><p>'+biB(v.d)+'</p>'
   +'<dl><dt>'+biB(['Couleurs','Farben'])+'</dt><dd>'+p.name+'</dd><dt>'+biB(['Typo','Schrift'])+'</dt><dd>'+f.fn+'</dd><dt>Logo</dt><dd>'+biB(L.n)+'</dd><dt>'+biB(['Formes','Formen'])+'</dt><dd>'+biB(v.f)+'</dd></dl>'
   +'<div class="acts2"><button class="btn" type="button" data-aver="'+v.id+'"></button></div></div></article>'}).join('');
@@ -974,7 +999,7 @@ function renderBrand(){
   +'<div class="acts2"><button class="btn" type="button" data-apal="'+p.id+'"></button></div></article>'}).join('');
  $('#fonts').innerHTML=FONTS.map(f=>'<article class="fc" data-fc="'+f.id+'"><div class="pal-h"><h3>'+f.n+'</h3>'+(f.cur?tag(['actuelle','aktuell']):'')+'</div><p class="fd" style="font-family:'+f.d+'">'+biB(['Trois jours. Trois sets.','Drei Tage. Drei Sätze.'])+'</p><p class="ft" style="font-family:'+f.t+'">'+biB(['Un week-end pour jouer plus fort, réduire le risque de blessure et mieux récupérer.','Ein Wochenende, um stärker zu spielen, das Verletzungsrisiko zu senken und besser zu erholen.'])+'</p><p class="fn">'+f.fn+' · SIL OFL 1.1</p><p>'+biB(f.x)+'</p><div class="acts2"><button class="btn" type="button" data-afont="'+f.id+'"></button></div></article>').join('');
  $('#logos').innerHTML=LOGOS.map(L=>{const s=useB('lg-'+L.id);
-  return '<article class="lg" data-lc="'+L.id+'"><div class="lg-main">'+s+'<div><b>3 SET RETREAT</b><small>'+biB(['Padel · Force · Récupération','Padel · Kraft · Erholung'])+'</small></div></div>'
+  return '<article class="lg" data-lc="'+L.id+'"><div class="lg-main">'+s+'<div><b>'+(L.id==='vivant'?'':'3 ')+'SET RETREAT</b><small>'+biB(['Padel · Force · Récupération','Padel · Kraft · Erholung'])+'</small></div></div>'
   +'<div class="lg-row"><figure class="lt">'+s+'<figcaption>'+biB(['Fond clair','Heller Grund'])+'</figcaption></figure><figure class="mn">'+s+'<figcaption>'+biB(['Une couleur','Einfarbig'])+'</figcaption></figure><figure class="px">'+s+'<figcaption>24&nbsp;px</figcaption></figure><figure class="ap"><span>'+s+'</span><figcaption>'+biB(['Icône','App-Icon'])+'</figcaption></figure></div>'
   +'<div class="lg-b"><div class="pal-h"><h3>'+biB(L.n)+'</h3>'+(L.cur?tag(['actuel','aktuell']):'')+'</div><p>'+biB(L.d)+'</p><div class="acts2"><button class="btn" type="button" data-alogo="'+L.id+'"></button></div></div></article>'}).join('');
  markBrand();
@@ -995,17 +1020,64 @@ function sceneThermes(){
  +'<path class="w1" d="'+w(448,8,90)+'"/><path class="w2" d="'+w(464,6,130)+'"/>'
  +'<path class="steam" d="M560 380 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -38 M600 372 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -38 c-12 -14 12 -24 0 -30 M640 380 c-12 -14 12 -24 0 -38"/></svg>';
 }
-function scene(){const v=st.ver||'actuelle';if(v==='club')return sceneClub();if(v==='thermes')return sceneThermes();sceneAlpin()}
+/* logo animé « Le 3 vivant » : le joueur (tête, corps, élan) devient un 3 ; seul le logo bouge */
+const VV=(()=>{
+ const N=40,W=104,W0=16;
+ const bz=(a,b,c,d)=>t=>{const u=1-t;return [u*u*u*a[0]+3*u*u*t*b[0]+3*u*t*t*c[0]+t*t*t*d[0],u*u*u*a[1]+3*u*u*t*b[1]+3*u*t*t*c[1]+t*t*t*d[1]]};
+ const el=(cx,cy,rx,ry,a0,a1)=>t=>{const a=(a0+(a1-a0)*t)*Math.PI/180;return [cx+rx*Math.cos(a),cy+ry*Math.sin(a)]};
+ function smp(segs,n){n=n||N;const f=[];segs.forEach((g,k)=>{for(let i=k?1:0;i<=200;i++)f.push(g(i/200))});
+  const L=[0];for(let i=1;i<f.length;i++)L.push(L[i-1]+Math.hypot(f[i][0]-f[i-1][0],f[i][1]-f[i-1][1]));
+  const o=[];let j=0;for(let k=0;k<n;k++){const s=L[L.length-1]*k/(n-1);while(j<L.length-2&&L[j+1]<s)j++;const a=(s-L[j])/((L[j+1]-L[j])||1);o.push([f[j][0]+(f[j+1][0]-f[j][0])*a,f[j][1]+(f[j+1][1]-f[j][1])*a])}return o}
+ const T3={t:smp([bz([100,130],[124,52],[186,14],[254,14]),bz([254,14],[350,14],[414,80],[414,170]),bz([414,170],[414,268],[326,330],[176,342])]),
+  b:smp([bz([176,342],[326,338],[452,410],[452,570]),bz([452,570],[452,728],[350,806],[244,806]),bz([244,806],[162,806],[96,770],[62,704])]),
+  l:smp([bz([452,570],[452,728],[350,806],[244,806])],20)};
+ const TF={t:smp([el(200,120,300,410,158,342)]),
+  b:smp([bz([209,34],[174,165],[138,272],[110,375]),bz([110,375],[191,479],[272,612],[326,819])]),
+  l:smp([bz([110,375],[56,494],[-7,627],[-88,759])],20)};
+ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ const lerp=(A,B,e)=>A.map((p,i)=>[p[0]+(B[i][0]-p[0])*e,p[1]+(B[i][1]-p[1])*e]);
+ const r0=v=>v.toFixed(0);
+ function smooth(p){let d='M'+r0(p[0][0])+','+r0(p[0][1]);for(let i=0;i<p.length-1;i++){const a=p[Math.max(i-1,0)],b=p[i],c=p[i+1],e=p[Math.min(i+2,p.length-1)];
+  d+=' C'+r0(b[0]+(c[0]-a[0])/6)+','+r0(b[1]+(c[1]-a[1])/6)+' '+r0(c[0]-(e[0]-b[0])/6)+','+r0(c[1]-(e[1]-b[1])/6)+' '+r0(c[0])+','+r0(c[1])}return d}
+ function taper(p){const Lf=[],Rt=[];for(let i=0;i<p.length;i++){const a=p[Math.max(i-1,0)],b=p[Math.min(i+1,p.length-1)];let dx=b[0]-a[0],dy=b[1]-a[1];const l=Math.hypot(dx,dy)||1;dx/=l;dy/=l;
+  const t=i/(p.length-1),w=(W0+(W-W0)*(t*t*(3-2*t)))/2;Lf.push([p[i][0]-dy*w,p[i][1]+dx*w]);Rt.push([p[i][0]+dy*w,p[i][1]-dx*w])}
+  return 'M'+Lf.concat(Rt.reverse()).map(q=>r0(q[0])+','+r0(q[1])).join(' L')+' Z'}
+ function at(m){const e=ease(Math.min(Math.max(m,0),1)),t=lerp(TF.t,T3.t,e);
+  return {s:taper(t),b:smooth(lerp(TF.b,T3.b,e)),l:smooth(lerp(TF.l,T3.l,e)),e:t[t.length-1],a:t[0]}}
+ return {at};
+})();
+/* cycle de 5,2 s : le 3 (2,2 s), il devient joueur (0,9 s), le joueur (1,2 s), retour au 3 (0,9 s) */
+function vvMorph(ms){const s=(ms%5200)/1000;if(s<2.2)return 1;if(s<3.1)return 1-(s-2.2)/0.9;if(s<4.3)return 0;return (s-4.3)/0.9}
+let vvOn=false,vvT0=0,vvLast=0;
+function vvDraw(m){const s=VV.at(m);
+ $$('.vv-s').forEach(x=>x.setAttribute('d',s.s));$$('.vv-b').forEach(x=>x.setAttribute('d',s.b));$$('.vv-l').forEach(x=>x.setAttribute('d',s.l));
+ $$('.vv-e').forEach(x=>{x.setAttribute('cx',s.e[0].toFixed(0));x.setAttribute('cy',s.e[1].toFixed(0))});
+ $$('.vv-a').forEach(x=>{x.setAttribute('cx',s.a[0].toFixed(0));x.setAttribute('cy',s.a[1].toFixed(0))})}
+function vvTick(now){if(!vvOn)return;if(now-vvLast>33){vvLast=now;vvDraw(vvMorph(now-vvT0))}requestAnimationFrame(vvTick)}
+function vvSet(on,init){const was=vvOn;vvOn=on;if(!init){st.anim=on;save()}
+ if(on&&!was){vvT0=performance.now();requestAnimationFrame(vvTick)}if(!on)vvDraw(1);
+ $$('[data-anim]').forEach(b=>{b.setAttribute('aria-pressed',String(!on));b.innerHTML=on?biB(['Arrêter l’animation du logo','Logo-Animation anhalten']):biB(['Animer le logo','Logo animieren'])})}
+function vvInit(){const r=matchMedia('(prefers-reduced-motion: reduce)').matches;vvSet(st.anim===undefined?!r:!!st.anim,true)}
+function sceneVivant(){
+ $('#scene').innerHTML='<svg viewBox="0 0 1200 480" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="1200" height="480" style="fill:var(--ink)"/>'
+ +'<path d="M-40 500A560 560 0 0 1 470 -30" fill="none" style="stroke:var(--acc)" stroke-width="64" stroke-linecap="round" opacity=".16"/>'
+ +'<path d="M880 500A170 170 0 0 1 1220 500" fill="none" style="stroke:var(--paper)" stroke-width="64" opacity=".1"/>'
+ +'<circle cx="1050" cy="110" r="86" style="fill:var(--sup)" opacity=".2"/>'
+ +'<g transform="translate(534,167.6) scale(0.33)"><path d="M209,34 C208,38 205,48 203,55 C201,62 199,69 197,76 C196,83 194,90 192,97 C190,104 188,111 186,118 C184,125 181,132 179,139 C177,146 175,153 173,160 C171,167 169,174 167,181 C165,188 163,195 161,202 C159,209 157,216 154,223 C152,230 150,237 148,244 C146,251 144,258 142,265 C140,272 138,279 136,286 C134,293 131,300 129,307 C127,314 125,321 123,328 C121,335 119,342 117,349 C115,356 111,363 111,370 C112,376 116,382 120,388 C124,394 129,400 133,406 C137,411 142,417 146,423 C150,429 154,435 158,441 C163,447 167,453 171,459 C175,466 178,472 182,478 C186,484 190,490 194,497 C197,503 201,509 205,515 C208,522 212,528 215,534 C219,541 222,547 226,554 C229,560 232,567 236,573 C239,580 242,586 245,593 C248,600 251,606 254,613 C257,619 260,626 263,633 C266,639 269,646 271,653 C274,660 277,667 279,673 C282,680 285,687 287,694 C290,701 292,707 294,714 C297,721 299,728 301,735 C304,742 306,749 308,756 C310,763 312,770 314,777 C316,784 318,791 320,798 C322,805 325,815 326,819" fill="none" style="stroke:var(--paper)" stroke-width="104" stroke-linecap="round" stroke-linejoin="round"/><path d="M110,375 C108,378 104,389 101,396 C97,403 94,410 91,416 C88,423 85,430 82,437 C78,444 75,451 72,458 C69,465 65,471 62,478 C59,485 56,492 52,499 C49,506 46,512 42,519 C39,526 36,533 32,540 C29,546 26,553 22,560 C19,567 15,574 12,580 C8,587 5,594 1,600 C-2,607 -6,614 -9,621 C-13,627 -16,634 -20,641 C-24,647 -27,654 -31,661 C-34,667 -38,674 -42,681 C-46,687 -49,694 -53,700 C-57,707 -61,713 -65,720 C-68,727 -72,733 -76,740 C-80,746 -86,756 -88,759" fill="none" style="stroke:var(--paper)" stroke-width="104" stroke-linecap="round"/><path d="M-70,272 L-78,243 L-83,215 L-87,186 L-89,157 L-90,128 L-89,99 L-86,70 L-82,42 L-76,14 L-68,-14 L-59,-41 L-48,-67 L-35,-93 L-21,-117 L-5,-140 L12,-162 L31,-182 L51,-200 L73,-216 L95,-229 L119,-239 L143,-247 L168,-251 L192,-252 L217,-250 L240,-245 L263,-236 L285,-225 L306,-212 L325,-196 L343,-179 L359,-159 L374,-139 L388,-117 L400,-94 L410,-70 L420,-45 L428,-20 L435,7 L536,-20 L527,-50 L517,-81 L504,-111 L490,-140 L473,-169 L454,-196 L433,-222 L409,-246 L383,-268 L355,-287 L324,-303 L292,-316 L258,-324 L224,-328 L189,-327 L155,-322 L123,-312 L92,-299 L64,-282 L37,-262 L14,-240 L-7,-216 L-26,-191 L-43,-165 L-58,-137 L-70,-109 L-81,-80 L-90,-51 L-97,-22 L-103,8 L-107,38 L-109,68 L-110,98 L-110,128 L-108,158 L-105,188 L-100,218 L-94,247 L-86,276 Z" style="fill:var(--acc)"/><circle cx="485" cy="-7" r="52" style="fill:var(--acc)"/><circle cx="-78" cy="274" r="8" style="fill:var(--acc)"/><circle cx="250" cy="-136" r="82" style="fill:var(--sup)"/></g></svg>';
+}
+function scene(){const v=st.ver||'vivant';if(v==='vivant')return sceneVivant();if(v==='club')return sceneClub();if(v==='thermes')return sceneThermes();sceneAlpin()}
 document.addEventListener('click',e=>{
+ if(e.target.closest('[data-anim]')){vvSet(!vvOn);return}
  const vr=e.target.closest('[data-aver]');if(vr){applyVersion(vr.dataset.aver);return}
  const a=e.target.closest('[data-apal]');if(a){applyPal(a.dataset.apal);return}
  const l=e.target.closest('[data-alogo]');if(l){applyLogo(l.dataset.alogo);return}
  const f=e.target.closest('[data-afont]');if(f){applyFont(f.dataset.afont);return}
- if(e.target.closest('[data-breset]'))applyVersion('actuelle');
+ if(e.target.closest('[data-breset]'))applyVersion('vivant');
 });
-if(!VERS.some(v=>v.id===st.ver))st.ver='actuelle';
-if(!LOGOS.some(L=>L.id===st.logo))st.logo='lignes';
-root.dataset.ver=st.ver;injectLogos();renderBrand();applyPal(st.pal||'thermal');applyLogo(st.logo);applyFont(st.font||'match');
+if(st.bv!==2){st.bv=2;st.ver='vivant';st.logo='vivant';st.pal='thermal';st.font='match'}
+if(!VERS.some(v=>v.id===st.ver))st.ver='vivant';
+if(!LOGOS.some(L=>L.id===st.logo))st.logo='vivant';
+root.dataset.ver=st.ver;injectLogos();renderBrand();applyPal(st.pal||'thermal');applyLogo(st.logo);applyFont(st.font||'match');vvInit();
 
 buildNav();scene();countdown();
 root.dataset.l=st.l;root.lang=st.l;setP(st.p);
